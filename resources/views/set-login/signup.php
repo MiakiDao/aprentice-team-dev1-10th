@@ -40,7 +40,7 @@
 
 
         <!-- バリデーション入れる -->
-        <form action="">
+        <form action="/index.php?page=signup_store" method="POST">
           
           <div class="form">
             <label for="">メールアドレス</label>
@@ -54,16 +54,19 @@
             <label for="">ユーザー名　　</label>
             <input type="text" name="name" id="name">
           </div>
-        </form>
+
 
 
         <div class="register">
           <nav class="main-nav">
             <ul>
-              <li class="next"><a href="index.php?page=setting">次へ　→</a></li>
+              <li class="next">
+                <button type="submit">次へ　→</button>
+              </li>
             </ul>
           </nav>
         </div>
+        </form>
       </div>
     </div>
 
