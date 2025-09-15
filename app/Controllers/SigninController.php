@@ -1,11 +1,12 @@
 <?php
+<<<<<<< HEAD
 require_once __DIR__ . '/../Models/user.php';
 
 <<<<<<< HEAD
+=======
+>>>>>>> 6949490 (入力を受け付けてコントローラを読んでモデルに登録させる処理を実装)
 require_once __DIR__ . '/../Models/User.php';
 
-=======
->>>>>>> origin/main
 class SigninController
 {
     public function authenticate()
@@ -16,6 +17,7 @@ class SigninController
         //フォームから送られてきた値を受け取る（空なら '' が入る）
         $email    = trim($_POST['email'] ?? '');
         $password = trim($_POST['password'] ?? '');
+<<<<<<< HEAD
 <<<<<<< HEAD
         //入力されたユーザー情報を照合（あったら$user=該当ユーザーの情報を持ってくる）
         $user = User::verify($email, $password);
@@ -31,12 +33,17 @@ class SigninController
         $user = User::verify($email, $password, $name);
 >>>>>>> origin/main
 >>>>>>> fb01f1d (Feature/migration (#32))
+=======
+
+        //入力されたユーザー情報を照合（あったら$user=該当ユーザーの情報を持ってくる）
+        $user = User::verify($email, $password);
+>>>>>>> 6949490 (入力を受け付けてコントローラを読んでモデルに登録させる処理を実装)
 
         if($user)
         {
-<<<<<<< HEAD
             // ログイン成功したらユーザー情報をセッションに保存
             $_SESSION['user'] = $user;
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
             // ログイン成功したらユーザー情報をセッションに保存
@@ -44,6 +51,9 @@ class SigninController
 =======
 >>>>>>> origin/main
 >>>>>>> fb01f1d (Feature/migration (#32))
+=======
+
+>>>>>>> 6949490 (入力を受け付けてコントローラを読んでモデルに登録させる処理を実装)
             header('Location: index.php?page=home');
             exit; //ここで明示的に処理終了
         } else {

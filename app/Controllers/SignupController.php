@@ -4,6 +4,7 @@ require_once __DIR__ . '/../Models/user.php'; //Userモデルを呼び出すた�
 
 class SignupController 
 {
+
     public function store(): void  //判定処理つけるか決める
     {
         // ユーザー入力の空白を取り除く
@@ -12,9 +13,9 @@ class SignupController
         $name     = trim($_POST['name'] ?? '');
         
         // 作成（モデルを呼ぶ）
-        $newUserId = User::create($name, $email, $password);
+        $user = User::create($name, $email, $password);
         
-        if ($newUserId) {
+        if ($user) {
             // 登録成功したら setting ページへ
             header('Location: index.php?page=setting');
             exit;

@@ -1,5 +1,4 @@
 <?php
-
 require_once __DIR__ . '/../app/Controllers/signupController.php';
 require_once __DIR__ . '/../app/Controllers/signinController.php';
 
@@ -15,22 +14,19 @@ switch ($page) {
     case 'create':
         $file = $viewsPath . 'set-login/create.php';
         break;
-
-    // 新規登録ページPOST    
     case 'signup_store':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             (new signupController())->store();
             exit;
         } //elseで例外処理
         else {
+
             header('Location: /index.php?page=signup');
             exit;
         }
-
     case 'setting':
     $file = $viewsPath . 'set-login/setting.php';
     break;
-
     case 'login':
         $file = $viewsPath . 'set-login/login.php';
         break;
