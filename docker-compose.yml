@@ -4,6 +4,8 @@ services:
     ports: ["8080:80"]
     volumes:
       - ./public:/var/www/html:cached
+      - ./resources:/var/www/resources:cached
+
     depends_on: [db]
   db:
     image: mysql:8.0
