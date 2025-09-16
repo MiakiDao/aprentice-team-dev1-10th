@@ -31,89 +31,88 @@
     </div>
 
     <!-- main ---------------------------------------------->
-  <main>
-    <div class="main wrapper">
+    <main>
+      <div class="main wrapper">
 
-      <div class="wrapper">
-        <h3>食事を記録する</h3>
-        <div class="section-content">
-          <div class="form-img">
-            <img src="/image/man2.png" alt="">
-            <span>マッチョ</span>
+        <div class="wrapper">
+          <h3>食事を記録する</h3>
+          <div class="section-content">
+            <div class="form-img">
+              <img src="/image/man2.png" alt="">
+              <span>マッチョ</span>
+            </div>
+
+            <form action="">
+              <div class="meal">
+                <ul>
+                  <textarea name="meal" id="meal" autocomplete="meal">textarea・サバの味噌煮・ほうれん草のお浸し</textarea>
+                </ul>
+                <input type="text"><span>input</span>
+              </div>
+            </form>
           </div>
 
           <form action="">
-            <div class="meal">
-              <ul>
-                <li>liごはん</li>
-                <li>li味噌汁</li>
-                <textarea name="meal" id="meal">textarea・サバの味噌煮・ほうれん草のお浸し</textarea>
-              </ul>
-              <input type="text"><span>input</span>
-            </div>
-          </form>
-
+              <div class="button">
+                <nav class="main-nav">
+                  <ul>
+                    <li class="proposal"><a href="#" id="registerBtn">登録する</a></li>
+                  </ul>
+                </nav>
+              </div>
+            </form>
 
         </div>
       </div>
-    </div>
 
-    <div class="outputmeal wrapper">
-      <h3>過去の記録</h3>
-      <!-- バリデーション入れる -->
-      <div class="error-ms">記録が更新されました！</div>
-      <!-- バリデーション入れる -->
-      <table class="meallog-table">
-        <thead>
+      <div class="outputmeal wrapper">
+        <h3>過去の記録</h3>
+        <!-- バリデーション入れる -->
+        <div class="error-ms">記録が更新されました！</div>
+        <!-- バリデーション入れる -->
+        <table class="meallog-table">
+          <thead>
 
-          <tr>
-            <th>日付</th>
-            <th>内容</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>9/15</td>
-            <td>サバの味噌煮<br>ほうれんそうのお浸し</td>
+            <tr>
+              <th>日付</th>
+              <th>内容</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>9/15</td>
+              <td>サバの味噌煮<br>ほうれんそうのお浸し</td>
             </tr>
             <tr>
-            <td>9/15</td>
-            <td>サバの味噌煮<br>ほうれんそうのお浸し</td>
+              <td>9/15</td>
+              <td>サバの味噌煮<br>ほうれんそうのお浸し</td>
             </tr>
             <tr>
-            <td>9/15</td>
-            <td>サバの味噌煮<br>ほうれんそうのお浸し</td>
+              <td>9/15</td>
+              <td>サバの味噌煮<br>ほうれんそうのお浸し</td>
             </tr>
             <tr>
-            <td>9/15</td>
-            <td>サバの味噌煮<br>ほうれんそうのお浸し</td>
+              <td>9/15</td>
+              <td>サバの味噌煮<br>ほうれんそうのお浸し</td>
             </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="bar wrapper">
-      <h3>こつこつ記録バー</h3>
-
-      <!-- バリデーション入れる -->
-      <div class="error-ms">記録バーが更新されました！</div>
-      <!-- バリデーション入れる -->
-
-      <div class="progress-bar">
-        <div class="progress" style="width: 60%;"></div>
-        <div class="marker"></div>
+          </tbody>
+        </table>
       </div>
-    </div>
 
-    <div>
-      <div class="button">
-        <nav class="main-nav">
-          <ul>
-            <li class="proposal"><a href="">登録する</a></li>
-          </ul>
-        </nav>
+      <div class="bar wrapper">
+        <h3>こつこつ記録バー</h3>
+
+        <!-- バリデーション入れる -->
+        <div class="error-ms">記録バーが更新されました！</div>
+        <!-- バリデーション入れる -->
+
+        <div class="progress-bar">
+          <div class="progress" style="width: 60%;"></div>
+          <div class="marker"></div>
+        </div>
       </div>
-    </div>
+
+
     </main>
 
     <!-- footer ---------------------------------------------->
@@ -124,6 +123,7 @@
       </div>
     </footer>
   </div>
+  <script src="/js/eat.js"></script>
 
 </body>
 
