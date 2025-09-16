@@ -42,55 +42,42 @@
               <span>マッチョ</span>
             </div>
 
-            <form action="">
+            <form id="mealForm" action="">
               <div class="meal">
-                <ul>
-                  <textarea name="meal" id="meal" autocomplete="meal">textarea・サバの味噌煮・ほうれん草のお浸し</textarea>
-                </ul>
-                <input type="text"><span>input</span>
+                <textarea name="meal" id="meal" autocomplete="meal"></textarea>
+              </div>
+              <div class="button">
+                <button type="submit" id="registerBtn" class="proposal">登録する</button>
               </div>
             </form>
           </div>
 
-          <form action="">
-              <div class="button">
-                <nav class="main-nav">
-                  <ul>
-                    <li class="proposal"><a href="#" id="registerBtn">登録する</a></li>
-                  </ul>
-                </nav>
-              </div>
-            </form>
-
         </div>
       </div>
 
+      <div class="bar wrapper">
+        <h3>こつこつ記録バー</h3>
+        <div class="progress-bar">
+          <div class="progress" style="width: 40%;"></div>
+          <div class="marker"></div>
+          <div class="ticks"></div>
+        </div>
+      </div>
+
+      <!-- バリデーション入れる -->
+      <div class="error-ms" id="result"></div>
+      <!-- バリデーション入れる -->
       <div class="outputmeal wrapper">
         <h3>過去の記録</h3>
-        <!-- バリデーション入れる -->
-        <div class="error-ms">記録が更新されました！</div>
-        <!-- バリデーション入れる -->
+
         <table class="meallog-table">
           <thead>
-
             <tr>
               <th>日付</th>
               <th>内容</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>9/15</td>
-              <td>サバの味噌煮<br>ほうれんそうのお浸し</td>
-            </tr>
-            <tr>
-              <td>9/15</td>
-              <td>サバの味噌煮<br>ほうれんそうのお浸し</td>
-            </tr>
-            <tr>
-              <td>9/15</td>
-              <td>サバの味噌煮<br>ほうれんそうのお浸し</td>
-            </tr>
+          <tbody id="mealLogBody">
             <tr>
               <td>9/15</td>
               <td>サバの味噌煮<br>ほうれんそうのお浸し</td>
@@ -98,21 +85,6 @@
           </tbody>
         </table>
       </div>
-
-      <div class="bar wrapper">
-        <h3>こつこつ記録バー</h3>
-
-        <!-- バリデーション入れる -->
-        <div class="error-ms">記録バーが更新されました！</div>
-        <!-- バリデーション入れる -->
-
-        <div class="progress-bar">
-          <div class="progress" style="width: 60%;"></div>
-          <div class="marker"></div>
-        </div>
-      </div>
-
-
     </main>
 
     <!-- footer ---------------------------------------------->
@@ -123,7 +95,51 @@
       </div>
     </footer>
   </div>
-  <script src="/js/eat.js"></script>
+
+  <script>
+    const form = document.getElementById('mealForm');
+    const tbody = document.getElementById('mealLogBody');
+    const result = document.getElementById('result');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const inputValue = document.getElementById('meal').value.trim();
+      if (inputValue === "") {
+        result.textContent = "内容を入力してください";
+        return;
+      }
+
+      // 新しい行を作成
+      const newRow = document.createElement('tr');
+
+      // 日付セル
+      const dateCell = document.createElement('td');
+      const today = new Date();
+      dateCell.textContent = `${today.getMonth() + 1}/${today.getDate()}`;
+
+      // 内容セル
+      const contentCell = document.createElement('td');
+      contentCell.innerHTML = inputValue.replace(/\n/g, '<br>');
+
+      // 行にセルを追加
+      newRow.appendChild(dateCell);
+      newRow.appendChild(contentCell);
+
+      // tbody に行を追加
+      tbody.appendChild(newRow);
+
+      // 入力欄を空にする
+      document.getElementById('meal').value = '';
+      result.textContent = "内容が登録され、こつこつバーが増加しました！"
+    });
+
+    const ticksContainer = document.querySelector('.ticks');
+for (let i = 1; i < 10; i++) { // 10分割なら9本
+  const tick = document.createElement('span');
+  ticksContainer.appendChild(tick);
+}
+  </script>
 
 </body>
 
