@@ -1,6 +1,6 @@
 <?php
 // ?page=xxx でどのページを表示
-$page = $_GET['page'] ?? 'index';
+$page = $_GET['page'] ?? 'start';
 
 // コンテナ内の絶対パス
 $viewsPath = '/var/www/resources/views/';
@@ -16,8 +16,8 @@ switch ($page) {
     case 'index':
         $file = $viewsPath . 'set-login/index.php';
         break;
-    case 'setting':
-        $file = $viewsPath . 'set-login/setting.php';
+    case 'start':
+        $file = $viewsPath . 'start.html';
         break;
     case 'home':
         $file = $viewsPath . 'home/home.php';
@@ -33,7 +33,7 @@ switch ($page) {
         $file = $viewsPath . 'input/menu.php';
         break;
     default:
-        $file = $viewsPath . 'set-login/index.php';
+        $file = $viewsPath . 'start.html';
         break;
 }
 
