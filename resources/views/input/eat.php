@@ -97,6 +97,7 @@
   </div>
 
   <script>
+    // 画面に入力値を表示する
     const form = document.getElementById('mealForm');
     const tbody = document.getElementById('mealLogBody');
     const result = document.getElementById('result');
@@ -134,11 +135,9 @@
       result.textContent = "内容が登録され、こつこつバーが増加しました！"
     });
 
-    const ticksContainer = document.querySelector('.ticks');
-for (let i = 1; i < 10; i++) { // 10分割なら9本
-  const tick = document.createElement('span');
-  ticksContainer.appendChild(tick);
-}
+    // 入力値をPHPを通してDBへ送る
+
+    
   </script>
 
 </body>
