@@ -64,3 +64,10 @@ CREATE TABLE dishes (
       FOREIGN KEY (method_id) REFERENCES methods(id)
       ON DELETE SET NULL ON UPDATE CASCADE
 );
+
+CREATE TABLE meal_log (
+	id INT AUTO_INCREMENT PRIMARY KEY,  
+  users_id  INT NOT NULL,
+	detail TEXT NOT NULL 
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,   
+);

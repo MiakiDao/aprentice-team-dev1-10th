@@ -66,10 +66,9 @@
 
       <!-- バリデーション入れる -->
       <div class="error-ms" id="result"></div>
-      <!-- バリデーション入れる -->
+
       <div class="outputmeal wrapper">
         <h3>過去の記録</h3>
-
         <table class="meallog-table">
           <thead>
             <tr>
@@ -96,7 +95,9 @@
     </footer>
   </div>
 
+  <!-- JS ------------------------------------------------------------------------------------->
   <script>
+    // 入力値を画面に表示す
     const form = document.getElementById('mealForm');
     const tbody = document.getElementById('mealLogBody');
     const result = document.getElementById('result');
@@ -134,11 +135,14 @@
       result.textContent = "内容が登録され、こつこつバーが増加しました！"
     });
 
-    const ticksContainer = document.querySelector('.ticks');
-for (let i = 1; i < 10; i++) { // 10分割なら9本
-  const tick = document.createElement('span');
-  ticksContainer.appendChild(tick);
-}
+
+    // 入力値を画面に表示する
+
+
+
+
+
+
   </script>
 
 </body>
