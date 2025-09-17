@@ -72,11 +72,15 @@
           </div>
         </div>
 
-        <p>こつこつ記録バー</p>
+        <div class="bar wrapper">
+        <h3>こつこつ記録バー</h3>
+        <div id="countArea"></div>
+
         <div class="progress-bar">
-          <div class="progress" style="width: 60%;"></div>
-          <div class="marker"></div>
+          <div class="progress"></div>
+          <div class="ticks"></div>
         </div>
+      </div>
 
       </section>
       <!-- 右サイド -------------------------------------------------->
@@ -132,6 +136,8 @@
       </div>
     </footer>
   </div>
+
+  <script src="js/home.js"></script>
 
 </body>
 
