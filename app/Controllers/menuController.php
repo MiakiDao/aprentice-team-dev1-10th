@@ -1,26 +1,31 @@
 <?php
-require_once '/var/www/config/db.php';
-function getSuggestedMenu(array $data) {
-    global $pdo;
+require_once '/var/www/app/Models/menuModel.php';
+use App\Models\MenuModel;
 
-    $genreId  = $data['genre'] ?? '';
-    $foodId   = $data['food'] ?? '';
-    $methodId = $data['method'] ?? '';
+class MenuController {
+    private MenuModel $menuModel;
 
-    if (!$genreId || !$foodId || !$methodId) {
-        return "選択してください";
+    public function __construct() {
+        $this->menuModel = new MenuModel();
     }
 
-    $stmt = $pdo->prepare("
-        SELECT dish_name
-        FROM dishes
-        WHERE genre_id = ? AND main_food_id = ? AND method_id = ?
-        ORDER BY RAND()
-        LIMIT 1
-    ");
-    $stmt->execute([$genreId, $foodId, $methodId]);
+    public function handle(array $postData): array {
+        $result = '';
+        $error  = '';
 
-    $dish = $stmt->fetchColumn();
+        // POST送信時のみ処理
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (empty($postData['genre']) || empty($postData['food']) || empty($postData['method'])) {
+                $error = 'それぞれ選択してください';
+            } else {
+                $result = $this->menuModel->getSuggestedDish(
+                    $postData['genre'],
+                    $postData['food'],
+                    $postData['method']
+                );
+            }
+        }
 
-    return $dish ?: "該当する献立はありません";
+        return ['result' => $result, 'error' => $error];
+    }
 }
