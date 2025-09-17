@@ -1,3 +1,11 @@
+<?php
+require_once '/var/www/app/Controllers/MenuController.php';
+$controller = new MenuController();
+
+$response = $controller->handle($_POST ?? []);
+$result = $response['result'];
+$error  = $response['error'];
+?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -37,31 +45,32 @@
         <div class="section-box">
           <h3>今日の献立を考えて！</h3>
 
-          <!-- バリデーション入れる -->
-          <div class="error-ms">それぞれ選択してください</div>
-          <!-- バリデーション入れる -->
+          <!-- エラー表示 -->
+          <?php if ($error): ?>
+            <div class="error-ms"><?php echo htmlspecialchars($error); ?></div>
+          <?php endif; ?>
 
           <div class="content">
-            <div class="meal-category">
-              <label for="">和洋中</label>
-              <input type="checkbox"><span>和風</span>
-              <input type="checkbox"><span>洋風</span>
-              <input type="checkbox"><span>中華</span>
-            </div>
-            <div class="meal-protein">
-              <label for="">主菜</label>
-              <input type="checkbox"><span>肉</span>
-              <input type="checkbox"><span>魚</span>
-              <input type="checkbox"><span>卵</span>
-              <input type="checkbox"><span>豆腐</span>
-            </div>
-            <div class="meal-method">
-              <label for="">調理法</label>
-              <input type="checkbox"><span>焼き</span>
-              <input type="checkbox"><span>蒸す</span>
-              <input type="checkbox"><span>煮る</span>
-              <input type="checkbox"><span>炒める</span>
-            </div>
+            <form method="post">
+                <label>ジャンル</label>
+                <input type="radio" name="genre" value="1">和風
+                <input type="radio" name="genre" value="2">中華
+                <input type="radio" name="genre" value="3">洋風
+
+                <label>主菜</label>
+                <input type="radio" name="food" value="1">肉
+                <input type="radio" name="food" value="2">魚
+                <input type="radio" name="food" value="3">卵
+                <input type="radio" name="food" value="4">豆
+
+                <label>調理法</label>
+                <input type="radio" name="method" value="1">焼く
+                <input type="radio" name="method" value="2">煮る
+                <input type="radio" name="method" value="3">炒める
+                <input type="radio" name="method" value="4">蒸す
+
+                <button type="submit">献立を提案</button>
+            </form>
           </div>
         </div>
       </section>
@@ -74,16 +83,17 @@
         </nav>
       </div>
 
-      <!-- バリデーション入れる -->
-      <div class="error-ms">見つかりました！</div>
-      <!-- バリデーション入れる -->
+      
 
 
       <div class="section-box">
         <section id="mealoutput">
           <h3>今日の献立は・・・・</h3>
           <div class="confirm">
-            <input type="text"><span>で決まりです！</span>
+            <!-- 結果の表示  -->
+            <?php if ($result): ?>
+                <p>今日の献立: <strong><?php echo htmlspecialchars($result); ?></strong></p>
+            <?php endif; ?>
           </div>
 
         </section>
@@ -95,6 +105,7 @@
           </ul>
         </nav>
       </div>
+     
 
 
     </div>
