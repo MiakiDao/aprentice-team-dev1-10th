@@ -1,8 +1,8 @@
 <?php
-// ?page=xxx でどのページを表示
+// ?page=xxx でどのページを表示　① どのページかを読み取る（リクエスト解析）
 $page = $_GET['page'] ?? 'start';
 
-// コンテナ内の絶対パス
+// コンテナ内の絶対パス　② そのページに対応する実ファイルを決める（ルート解決）
 $viewsPath = '/var/www/resources/views/';
 
 // ページごとのファイルパス
@@ -25,7 +25,6 @@ switch ($page) {
     case 'home-setting':
         $file = $viewsPath . 'home/setting.php';
         break;
-    
     case 'eat':
         $file = $viewsPath . 'input/eat.php';
         break;
