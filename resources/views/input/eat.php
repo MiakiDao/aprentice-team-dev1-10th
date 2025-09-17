@@ -42,7 +42,7 @@
               <span>マッチョ</span>
             </div>
 
-            <form id="mealForm" action="">
+            <form id="mealForm" action="" method="post">
               <div class="meal">
                 <textarea name="meal" id="meal" autocomplete="meal"></textarea>
               </div>
@@ -57,34 +57,43 @@
 
       <div class="bar wrapper">
         <h3>こつこつ記録バー</h3>
+
         <div class="progress-bar">
-          <div class="progress" style="width: 40%;"></div>
-          <div class="marker"></div>
-          <div class="ticks"></div>
+          <div class="progress"></div>
+          <div class="ticks">
+            <div class="tick">0%</div>
+            <div class="tick">20%</div>
+            <div class="tick">40%</div>
+            <div class="tick">60%</div>
+            <div class="tick">80%</div>
+            <div class="tick">100%</div>
+          </div>
         </div>
       </div>
 
-      <!-- バリデーション入れる -->
-      <div class="error-ms" id="result"></div>
-      <!-- バリデーション入れる -->
-      <div class="outputmeal wrapper">
-        <h3>過去の記録</h3>
+        <!-- バリデーション入れる -->
+        <div class="error-ms" id="countArea"></div>
+        <div class="error-ms" id="result"></div>
+        <!-- バリデーション入れる -->
+        <div class="outputmeal wrapper">
+          <h3>過去の記録</h3>
 
-        <table class="meallog-table">
-          <thead>
-            <tr>
-              <th>日付</th>
-              <th>内容</th>
-            </tr>
-          </thead>
-          <tbody id="mealLogBody">
-            <tr>
-              <td>9/15</td>
-              <td>サバの味噌煮<br>ほうれんそうのお浸し</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+          <table class="meallog-table">
+            <thead>
+              <tr>
+                <th>日付</th>
+                <th>内容</th>
+                <th>ごみ箱</th>
+              </tr>
+            </thead>
+            <tbody id="mealLogBody">
+              <!-- <tr>
+              <td></td>
+              <td><br></td>
+            </tr> -->
+            </tbody>
+          </table>
+        </div>
     </main>
 
     <!-- footer ---------------------------------------------->
@@ -96,51 +105,7 @@
     </footer>
   </div>
 
-  <script>
-    const form = document.getElementById('mealForm');
-    const tbody = document.getElementById('mealLogBody');
-    const result = document.getElementById('result');
-
-    form.addEventListener('submit', function(event) {
-      event.preventDefault();
-
-      const inputValue = document.getElementById('meal').value.trim();
-      if (inputValue === "") {
-        result.textContent = "内容を入力してください";
-        return;
-      }
-
-      // 新しい行を作成
-      const newRow = document.createElement('tr');
-
-      // 日付セル
-      const dateCell = document.createElement('td');
-      const today = new Date();
-      dateCell.textContent = `${today.getMonth() + 1}/${today.getDate()}`;
-
-      // 内容セル
-      const contentCell = document.createElement('td');
-      contentCell.innerHTML = inputValue.replace(/\n/g, '<br>');
-
-      // 行にセルを追加
-      newRow.appendChild(dateCell);
-      newRow.appendChild(contentCell);
-
-      // tbody に行を追加
-      tbody.appendChild(newRow);
-
-      // 入力欄を空にする
-      document.getElementById('meal').value = '';
-      result.textContent = "内容が登録され、こつこつバーが増加しました！"
-    });
-
-    const ticksContainer = document.querySelector('.ticks');
-for (let i = 1; i < 10; i++) { // 10分割なら9本
-  const tick = document.createElement('span');
-  ticksContainer.appendChild(tick);
-}
-  </script>
-
+  <script src="js/eat.js"></script>
 </body>
 
 </html>
