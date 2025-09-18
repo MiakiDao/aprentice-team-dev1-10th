@@ -157,19 +157,45 @@ h3 {
 }
 
 .progress-bar {
-  width: 90%;
+  width: 100%;
   background-color: #e0e0e0;
   border-radius: 10px;
   overflow: hidden;
   height: 20px;
+  position: relative;
 }
 
 .progress {
   height: 100%;
   background-color: #F5E24D;
   width: 0%;
-  /* JSで動的に変えることも可能 */
   transition: width 0.3s ease;
+}
+.ticks {
+  position: absolute;
+  top: 100%; 
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.tick {
+  position: relative;
+  text-align: center;
+  width: 1px;
+}
+
+.tick::before {
+  content: "";
+  position: absolute;
+  top: -20px;  
+  left: 50%;
+  width: 1px;
+  height: 20px;
+  background: #333;
 }
 
 .form-img {

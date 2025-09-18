@@ -105,3 +105,7 @@ INSERT INTO dishes (dish_name, genre_id, main_food_id, method_id) VALUES
 ('豆腐のトマト煮', 3, 4, 2),
 ('豆腐ときのこのガーリックソテー', 3, 4, 3),
 ('豆腐のハーブ蒸し オリーブオイル', 3, 4, 4);
+
+INSERT INTO meal_log (users_id, detail) VALUES
+(1, 'サバの味噌煮、ほうれん草のお浸し、味噌汁');
+
