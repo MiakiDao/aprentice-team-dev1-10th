@@ -5,6 +5,8 @@ services:
     volumes:
       - ./public:/var/www/html:cached
       - ./resources:/var/www/resources:cached
+      - ./app:/var/www/app:cached
+      - ./config:/var/www/config:cached
 
     depends_on: [db]
   db:
@@ -19,5 +21,6 @@ services:
     command:
     - --character-set-server=utf8mb4
     - --collation-server=utf8mb4_0900_ai_ci
+
     volumes:
       - ./database/migrations:/docker-entrypoint-initdb.d

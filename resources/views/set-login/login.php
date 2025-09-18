@@ -1,77 +1,78 @@
+<?php
+session_start();
+
+$error = null;
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $email    = trim($_POST['email'] ?? '');
+  $password = $_POST['password'] ?? '';
+
+  // まずは仮の認証（あとでDB照合に置き換え）
+  $validEmail = 'demo@example.com';
+  $validPass  = 'pass1234';
+
+  if ($email === $validEmail && $password === $validPass) {
+    $_SESSION['user'] = ['email' => $email];
+    header('Location: /?page=home');   // ログイン後に遷移
+    exit;
+  } else {
+    $error = 'メールアドレスまたはパスワードが違います。';
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/styleset-login.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  <title>仮)食事記録アプリ | ログイン</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>login画面</title>
+  <link rel="stylesheet" href="/css/styleset-home.css" />
+  <link rel="stylesheet" href="/css/start.css" />
 </head>
-
 <body>
-  <!-- header ---------------------------------------------->
-  <div class="page-wrapper">
-    <div id="top">
-      <div class="page-header wrapper">
-        <div class="header">
-          <h1><a href="/"><img src="/image/logo.png" alt="ロゴ"></a></h1>
+  <div class="start">
+    <h1 class="title">献立提案アプリ/ログイン</h1>
 
-          <nav class="top-nav">
-            <ul>
-              <li><a href="index.php?page=signup">新規登録</a></li>
-            </ul>
-          </nav>
-        </div>
-      </div>
+    <div class="inner">
+      <?php if ($error): ?>
+        <p class="error-ms" style="color:#c00;text-align:center;">
+          <?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8') ?>
+        </p>
+      <?php endif; ?>
 
-    </div>
-    <!-- banner ---------------------------------------------->
-    <div class="banner">
-      <h2>食事管理アプリ | ログイン</h2>
-    </div>
+      <!-- aタグではなく、フォームでPOSTする -->
+      <form method="post" action="/?page=login">
+        <ul class="menu">
+          <li>
+            <input
+              class="card-input"
+              type="email"
+              name="email"
+              placeholder="メールアドレス"
+              required
+              value="<?= htmlspecialchars($_POST['email'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
+            />
+          </li>
+          <li>
+            <input
+              class="card-input"
+              type="password"
+              name="password"
+              placeholder="パスワード"
+              required
+            />
+          </li>
+          <li>
+            <button type="submit" class="card">ログイン</button>
+          </li>
+        </ul>
+      </form>
 
-    <!-- main ---------------------------------------------->
-    <div class="main wrapper">
-      <div class="content">
-
-        <!-- バリデーション入れる -->
-        <div class="error-ms">メールアドレスまたはパスワードが違います。</div>
-
-
-        <!-- バリデーション入れる -->
-        <form action="">
-          <div class="form">
-            <label for="">メールアドレス</label>
-            <input type="email" name="email" id="email">
-          </div>
-          <div class="form">
-            <label for="">パスワード　　</label>
-            <input type="password" name="password" id="password">
-          </div>
-        </form>
-
-
-        <div class="register">
-          <nav class="main-nav">
-            <ul>
-              <li class="login"><a href="index.php?page=home">ログイン</a></li>
-            </ul>
-          </nav>
-        </div>
-      </div>
+      <footer class="start-footer">
+        <div class="container">© 2025 TeamProject1</div>
+      </footer>
     </div>
 
-    <!-- footer ---------------------------------------------->
-
-    <footer id="footer">
-      <div class="footer wrapper">
-        <div class="footer-logo"><a href="/"><img src="/image/logo.png" alt="ロゴ"></a></div>
-        <p>Copyright © TeamDev1 食事記録アプリ</p>
-      </div>
-    </footer>
+    <script src="/js/start.js"></script>
   </div>
-
 </body>
-
 </html>
