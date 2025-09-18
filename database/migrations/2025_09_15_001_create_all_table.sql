@@ -15,11 +15,6 @@ CREATE TABLE users (
     user_name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255),
-    point INT DEFAULT 0,
-    weight DECIMAL(5,2),
-    height DECIMAL(5,2),
-    body_fat DECIMAL(5,2) NULL,
-    muscle_mass DECIMAL(5,2) NULL,
     body_type_id INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -29,6 +24,29 @@ CREATE TABLE users (
       ON DELETE SET NULL ON UPDATE CASCADE
 );
 
+CREATE TABLE points(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    point INT DEFAULT 0,
+
+    CONSTRAINT  fk_points_users
+    FOREIGN KEY (user_id) REFERENCES users(id)
+    ON DELETE SET NULL ON UPDATE CASCADE
+);
+
+CREATE TABLE measurements(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    weight DECIMAL(5,2),
+    height DECIMAL(5,2),
+    body_fat DECIMAL(5,2) NULL,
+    muscle_mass DECIMAL(5,2) NULL,
+
+
+    CONSTRAINT  fk_measurements_users
+    FOREIGN KEY (user_id) REFERENCES users(id)
+    ON DELETE SET NULL ON UPDATE CASCADE
+);
 
 CREATE TABLE genres(
     id INT AUTO_INCREMENT PRIMARY KEY,
