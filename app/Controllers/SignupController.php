@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 require_once __DIR__ . '/../Models/user.php'; //Userモデルを呼び出すため
+=======
+require_once __DIR__ . '/../Models/User.php'; //Userモデルを呼び出すため
+>>>>>>> 58169dc (Feature/signup (#20))
 
 class SignupController 
 {

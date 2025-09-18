@@ -26,7 +26,6 @@ switch ($page) {
             exit;
         }
         break;
-
     case 'setting':
     $file = $viewsPath . 'set-login/setting.php';
     break;
