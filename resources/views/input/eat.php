@@ -4,12 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/styleset-input.css">
+  <link rel="stylesheet" href="/css/styleset-eat.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <title>仮)食事記録アプリ | 食事を記録する</title>
 </head>
 
 <body>
+<canvas id="confetti"></canvas>
   <!-- header ---------------------------------------------->
   <div class="page-wrapper">
     <div id="top">
@@ -42,13 +43,14 @@
               <span>マッチョ</span>
             </div>
 
-            <form id="mealForm" action="">
+            <form id="mealForm" action="" method="post">
               <div class="meal">
                 <textarea name="meal" id="meal" autocomplete="meal"></textarea>
               </div>
               <div class="button">
                 <button type="submit" id="registerBtn" class="proposal">登録する</button>
               </div>
+
             </form>
           </div>
 
@@ -57,31 +59,39 @@
 
       <div class="bar wrapper">
         <h3>こつこつ記録バー</h3>
+
         <div class="progress-bar">
-          <div class="progress" style="width: 40%;"></div>
-          <div class="marker"></div>
-          <div class="ticks"></div>
+          <div class="progress"></div>
+          <div class="ticks">
+            <div class="tick">0%</div>
+            <div class="tick">20%</div>
+            <div class="tick">40%</div>
+            <div class="tick">60%</div>
+            <div class="tick">80%</div>
+            <div class="tick">100%</div>
+          </div>
         </div>
       </div>
 
       <!-- バリデーション入れる -->
+      <div class="error-ms" id="countArea"></div>
       <div class="error-ms" id="result"></div>
-      <!-- バリデーション入れる -->
+
       <div class="outputmeal wrapper">
         <h3>過去の記録</h3>
-
         <table class="meallog-table">
           <thead>
             <tr>
               <th>日付</th>
               <th>内容</th>
+              <th>ごみ箱</th>
             </tr>
           </thead>
           <tbody id="mealLogBody">
-            <tr>
-              <td>9/15</td>
-              <td>サバの味噌煮<br>ほうれんそうのお浸し</td>
-            </tr>
+            <!-- <tr>
+              <td></td>
+              <td><br></td>
+            </tr> -->
           </tbody>
         </table>
       </div>
@@ -96,7 +106,10 @@
     </footer>
   </div>
 
+<<<<<<< HEAD
+  <!-- JS ------------------------------------------------------------------------------------->
   <script>
+    // 入力値を画面に表示す
     const form = document.getElementById('mealForm');
     const tbody = document.getElementById('mealLogBody');
     const result = document.getElementById('result');
@@ -134,13 +147,19 @@
       result.textContent = "内容が登録され、こつこつバーが増加しました！"
     });
 
-    const ticksContainer = document.querySelector('.ticks');
-for (let i = 1; i < 10; i++) { // 10分割なら9本
-  const tick = document.createElement('span');
-  ticksContainer.appendChild(tick);
-}
+
+    // 入力値を画面に表示する
+
+
+
+
+
+
   </script>
 
+=======
+  <script src="js/eat.js"></script>
+>>>>>>> main
 </body>
 
 </html>

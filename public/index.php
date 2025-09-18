@@ -1,8 +1,8 @@
 <?php
-// ?page=xxx でどのページを表示
-$page = $_GET['page'] ?? 'index';
+// ?page=xxx でどのページを表示　① どのページかを読み取る（リクエスト解析）
+$page = $_GET['page'] ?? 'start';
 
-// コンテナ内の絶対パス
+// コンテナ内の絶対パス　② そのページに対応する実ファイルを決める（ルート解決）
 $viewsPath = '/var/www/resources/views/';
 
 // ページごとのファイルパス
@@ -16,8 +16,8 @@ switch ($page) {
     case 'index':
         $file = $viewsPath . 'set-login/index.php';
         break;
-    case 'setting':
-        $file = $viewsPath . 'set-login/setting.php';
+    case 'start':
+        $file = $viewsPath . 'start.html';
         break;
     case 'home':
         $file = $viewsPath . 'home/home.php';
@@ -25,7 +25,6 @@ switch ($page) {
     case 'home-setting':
         $file = $viewsPath . 'home/setting.php';
         break;
-    
     case 'eat':
         $file = $viewsPath . 'input/eat.php';
         break;
@@ -33,7 +32,7 @@ switch ($page) {
         $file = $viewsPath . 'input/menu.php';
         break;
     default:
-        $file = $viewsPath . 'set-login/index.php';
+        $file = $viewsPath . 'start.html';
         break;
 }
 
