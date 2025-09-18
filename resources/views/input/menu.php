@@ -121,17 +121,6 @@ $selectedMethod = $_POST['method'] ?? '';
       <p>Copyright © TeamDev1 食事記録アプリ</p>
     </div>
   </footer>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 377f3db (eat.js追加)
-=======
-
->>>>>>> 9ba9cc9 (menu.phpを変更)
-=======
->>>>>>> ad669de (eat.js追加)
   <script src="js/menu.js"></script>
 </body>
 
