@@ -90,10 +90,3 @@ CREATE TABLE meal_log (
 	detail TEXT NOT NULL 
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,   
 );
-=======
-	detail TEXT NOT NULL ,
-	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-
->>>>>>> main
