@@ -8,6 +8,7 @@ $error  = $response['error'];
 
 $selectedGenre = $_POST['genre'] ?? '';
 $selectedFood = $_POST['food'] ?? '';
+
 $selectedMethod = $_POST['method'] ?? '';
 ?>
 <!DOCTYPE html>
@@ -91,7 +92,6 @@ $selectedMethod = $_POST['method'] ?? '';
 
       <div class="section-box">
         <section id="mealoutput">
-
           <div class="button-wrapper">
 
             <button class="shine-button button-electric">
@@ -122,7 +122,10 @@ $selectedMethod = $_POST['method'] ?? '';
       <p>Copyright © TeamDev1 食事記録アプリ</p>
     </div>
   </footer>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 377f3db (eat.js追加)
   <script src="js/menu.js"></script>
 </body>
 
