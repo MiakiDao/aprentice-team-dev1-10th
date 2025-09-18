@@ -7,9 +7,12 @@ $viewsPath = '/var/www/resources/views/';
 
 // ページごとのファイルパス
 switch ($page) {
-    case 'signup':
-        $file = $viewsPath . 'set-login/signup.php';
+    case 'create':
+        $file = $viewsPath . 'set-login/create.php';
         break;
+    case 'create2':
+    $file = $viewsPath . 'set-login/create2.php';
+    break;
     case 'login':
         $file = $viewsPath . 'set-login/login.php';
         break;

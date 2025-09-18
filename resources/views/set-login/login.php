@@ -1,67 +1,34 @@
-<?php
-session_start();
-
-$error = null;
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $email    = trim($_POST['email'] ?? '');
-  $password = $_POST['password'] ?? '';
-
-  // まずは仮の認証（あとでDB照合に置き換え）
-  $validEmail = 'demo@example.com';
-  $validPass  = 'pass1234';
-
-  if ($email === $validEmail && $password === $validPass) {
-    $_SESSION['user'] = ['email' => $email];
-    header('Location: /?page=home');   // ログイン後に遷移
-    exit;
-  } else {
-    $error = 'メールアドレスまたはパスワードが違います。';
-  }
-}
-?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>login画面</title>
+  <title>login画面UIのみ</title>
+
   <link rel="stylesheet" href="/css/styleset-home.css" />
   <link rel="stylesheet" href="/css/start.css" />
+  <link rel="stylesheet" href="/css/login.css" />
+
 </head>
 <body>
   <div class="start">
-    <h1 class="title">献立提案アプリ/ログイン</h1>
+    <h1 class="title">献立提案アプリ/ログインUIのみ</h1>
 
     <div class="inner">
-      <?php if ($error): ?>
-        <p class="error-ms" style="color:#c00;text-align:center;">
-          <?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8') ?>
-        </p>
-      <?php endif; ?>
+      <p id="err" class="login-alert" hidden>メールアドレスまたはパスワードが違います</p>
 
       <!-- aタグではなく、フォームでPOSTする -->
-      <form method="post" action="/?page=login">
+      <form method="post" action="/?page=login" id="login-form" novalidate>
         <ul class="menu">
-          <li>
-            <input
-              class="card-input"
-              type="email"
-              name="email"
-              placeholder="メールアドレス"
-              required
-              value="<?= htmlspecialchars($_POST['email'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
-            />
+          <li class="login-field">
+            <label class="login-label" for="email">メールアドレス</label>
+            <input id="email" class="login-input card-input" type="email" name="email" placeholder="hello@example.com" required />
           </li>
-          <li>
-            <input
-              class="card-input"
-              type="password"
-              name="password"
-              placeholder="パスワード"
-              required
-            />
+          <li class="login-field">
+            <label class="login-label" for="password">パスワード</label>
+            <input id="password" class="login-input card-input" type="password" name="password" placeholder="8文字以上" required />
           </li>
-          <li>
+          <li class="login_actions">
             <button type="submit" class="card">ログイン</button>
           </li>
         </ul>
@@ -71,8 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="container">© 2025 TeamProject1</div>
       </footer>
     </div>
-
-    <script src="/js/start.js"></script>
+  </div>
+    <script src="/js/login.js"></script>
   </div>
 </body>
 </html>
