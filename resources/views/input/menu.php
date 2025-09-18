@@ -6,6 +6,9 @@ $response = $controller->handle($_POST ?? []);
 $result = $response['result'];
 $error  = $response['error'];
 
+$selectedGenre = $_POST['genre'] ?? '';
+$selectedFood = $_POST['food'] ?? '';
+$selectedMethod = $_POST['method'] ?? '';
 ?>
 <!DOCTYPE html>
 <html lang="ja">
