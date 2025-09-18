@@ -10,6 +10,7 @@ $selectedGenre = $_POST['genre'] ?? '';
 $selectedFood = $_POST['food'] ?? '';
 
 $selectedMethod = $_POST['method'] ?? '';
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -123,9 +124,13 @@ $selectedMethod = $_POST['method'] ?? '';
     </div>
   </footer>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 377f3db (eat.js追加)
+=======
+
+>>>>>>> 9ba9cc9 (menu.phpを変更)
   <script src="js/menu.js"></script>
 </body>
 
