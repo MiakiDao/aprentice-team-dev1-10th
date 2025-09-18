@@ -1,10 +1,10 @@
 <?php
-// require_once '/var/www/app/Controllers/MenuController.php';
-// $controller = new MenuController();
+require_once '/var/www/app/Controllers/MenuController.php';
+$controller = new MenuController();
 
-// $response = $controller->handle($_POST ?? []);
-// $result = $response['result'];
-// $error  = $response['error'];
+$response = $controller->handle($_POST ?? []);
+$result = $response['result'];
+$error  = $response['error'];
 ?>
 <!DOCTYPE html>
 <html lang="ja">
