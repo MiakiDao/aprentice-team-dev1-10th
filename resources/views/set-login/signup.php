@@ -61,7 +61,7 @@
           <nav class="main-nav">
             <ul>
               <li class="next">
-                <button type="submit">次へ　→</button>
+                <button style="all: unset; color: white;" type="submit">次へ　→</button>
               </li>
             </ul>
           </nav>

@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../app/Controllers/SignupController.php';
+require_once __DIR__ . '/../app/Controllers/SigninController.php';
 
 // ?page=xxx でどのページを表示
 $page = $_GET['page'] ?? 'index';
@@ -13,11 +14,12 @@ switch ($page) {
     case 'signup':
         $file = $viewsPath . 'set-login/signup.php';
         break;
+    // 新規登録ページPOST    
     case 'signup_store':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             (new SignupController())->store();
             exit;
-        } //elseで例外処理書くべき？
+        } //elseで例外処理
          else {
             header('Location: /index.php?page=signup');
             exit;
@@ -26,6 +28,16 @@ switch ($page) {
     case 'login':
         $file = $viewsPath . 'set-login/login.php';
         break;
+    // ログインページPOST
+    case 'signin_verify':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            (new SigninController())->authenticate();
+            exit;
+            } 
+             else {
+                header('Location: /index.php?page=signin');
+                exit;
+                }
     case 'index':
         $file = $viewsPath . 'set-login/index.php';
         break;

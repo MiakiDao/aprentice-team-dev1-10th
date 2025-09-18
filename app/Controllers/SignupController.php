@@ -4,14 +4,14 @@ require_once __DIR__ . '/../Models/User.php'; //Userモデルを呼び出すた�
 
 class SignupController 
 {
-    public function store(): void
+    public function store(): void  //判定処理つけるか決める
     {
-        // 基本のサニタイズ/取得
+        // ユーザー入力の空白を取り除く
         $email    = trim($_POST['email'] ?? '');
-        $password = $_POST['password'] ?? '';
+        $password = trim($_POST['password'] ?? '');
         $name     = trim($_POST['name'] ?? '');
         
-        // 作成（モデルに委譲）
+        // 作成（モデルを呼ぶ）
         $newUserId = User::create($name, $email, $password);
         
         if ($newUserId) {

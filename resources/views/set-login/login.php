@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -6,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/styleset-login.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  <title>仮)食事記録アプリ | ログイン</title>
+  <title>仮食事記録アプリ | ログイン</title>
 </head>
 
 <body>
@@ -35,12 +38,15 @@
     <div class="main wrapper">
       <div class="content">
 
-        <!-- バリデーション入れる -->
-        <div class="error-ms">メールアドレスまたはパスワードが違います。</div>
+        <!-- 入力されたデータが一致しない場合はSigninControllerから発行されたエラー文を表示 -->
+        <?php if (!empty($_SESSION['error'])): ?>
+        <p style="color:red;"><?php echo $_SESSION['error']; ?></p>
+        <?php unset($_SESSION['error']); ?>
+        <?php endif; ?>
 
 
         <!-- バリデーション入れる -->
-        <form action="">
+        <form action="/index.php?page=signin_verify" method="POST">
           <div class="form">
             <label for="">メールアドレス</label>
             <input type="email" name="email" id="email">
@@ -49,16 +55,19 @@
             <label for="">パスワード　　</label>
             <input type="password" name="password" id="password">
           </div>
-        </form>
+
 
 
         <div class="register">
           <nav class="main-nav">
             <ul>
-              <li class="login"><a href="index.php?page=home">ログイン</a></li>
+              <li class="login">
+                <button style="all: unset;" type="submit">ログイン</button>
+              </li>
             </ul>
           </nav>
         </div>
+        </form>
       </div>
     </div>
 
