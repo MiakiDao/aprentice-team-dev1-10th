@@ -2,7 +2,6 @@
 require_once __DIR__ . '/../app/Controllers/signupController.php';
 require_once __DIR__ . '/../app/Controllers/signinController.php';
 
-
 // ?page=xxx でどのページを表示　① どのページかを読み取る（リクエスト解析）
 $page = $_GET['page'] ?? 'start';
 
@@ -14,13 +13,13 @@ switch ($page) {
     case 'create':
         $file = $viewsPath . 'set-login/create.php';
         break;
+    // 新規登録ページPOST    
     case 'signup_store':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             (new signupController())->store();
             exit;
         } //elseで例外処理
         else {
-
             header('Location: /index.php?page=signup');
             exit;
         }

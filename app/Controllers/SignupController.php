@@ -1,10 +1,8 @@
 <?php
 require_once __DIR__ . '/../Models/user.php'; //Userモデルを呼び出すため
 
-
-class SignupController 
+class signupController 
 {
-
     public function store(): void  //判定処理つけるか決める
     {
         // ユーザー入力の空白を取り除く
