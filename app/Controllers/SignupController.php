@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../Models/user.php'; //Userモデルを呼び出すため
+require_once __DIR__ . '/../Models/user.php';
 
 class signupController 
 {
