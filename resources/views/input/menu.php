@@ -12,7 +12,7 @@ $error  = $response['error'];
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/styleset-input.css">
+  <link rel="stylesheet" href="/css/styleset-menu.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <title>仮)食事記録アプリ | 献立提案</title>
 </head>
@@ -52,39 +52,38 @@ $error  = $response['error'];
 
           <div class="content">
             <form method="post">
-                <label>ジャンル</label>
-                <input type="radio" name="genre" value="1">和風
-                <input type="radio" name="genre" value="2">中華
-                <input type="radio" name="genre" value="3">洋風
+              <h1 class="post-h1">ジャンル</h1>
+              <div class="label-a">
+                <label><input type="radio" name="genre" value="1">和風</label>
+                <label><input type="radio" name="genre" value="2">中華</label>
+                <label><input type="radio" name="genre" value="3">洋風</label>
+              </div>
 
-                <label>主菜</label>
-                <input type="radio" name="food" value="1">肉
-                <input type="radio" name="food" value="2">魚
-                <input type="radio" name="food" value="3">卵
-                <input type="radio" name="food" value="4">豆
+              <h1 class="post-h1">主菜</h1>
+              <div class="label-a">
+                <label><input type="radio" name="food" value="1">肉</label>
+                <label><input type="radio" name="food" value="2">魚</label>
+                <label><input type="radio" name="food" value="3">卵</label>
+                <label><input type="radio" name="food" value="4">豆</label>
+              </div>
 
-                <label>調理法</label>
-                <input type="radio" name="method" value="1">焼く
-                <input type="radio" name="method" value="2">煮る
-                <input type="radio" name="method" value="3">炒める
-                <input type="radio" name="method" value="4">蒸す
+              <h1 class="post-h1">調理法</h1>
+              <div class="label-a">
+                <label><input type="radio" name="method" value="1">焼く</label>
+                <label><input type="radio" name="method" value="2">煮る</label>
+                <label><input type="radio" name="method" value="3">炒める</label>
+                <label><input type="radio" name="method" value="4">蒸す</label>
+              </div>
 
-                <button type="submit">献立を提案</button>
+
+              <div class="button">
+                <button type="submit" class="proposal">今日の献立を探す</button>
+              </div>
+
             </form>
           </div>
         </div>
       </section>
-
-      <div class="button">
-        <nav class="main-nav">
-          <ul>
-            <li class="proposal"><a href="">今日の献立を探す</a></li>
-          </ul>
-        </nav>
-      </div>
-
-      
-
 
       <div class="section-box">
         <section id="mealoutput">
@@ -92,7 +91,7 @@ $error  = $response['error'];
           <div class="confirm">
             <!-- 結果の表示  -->
             <?php if ($result): ?>
-                <p>今日の献立: <strong><?php echo htmlspecialchars($result); ?></strong></p>
+              <p>今日の献立: <strong><?php echo htmlspecialchars($result); ?></strong>で決定！</p>
             <?php endif; ?>
           </div>
 
@@ -105,18 +104,8 @@ $error  = $response['error'];
           </ul>
         </nav>
       </div>
-     
-
-
     </div>
-
-
-
-
-
   </div>
-
-
 
   <!-- footer ---------------------------------------------->
 

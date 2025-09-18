@@ -4,12 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/styleset-input.css">
+  <link rel="stylesheet" href="/css/styleset-eat.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <title>仮)食事記録アプリ | 食事を記録する</title>
 </head>
 
 <body>
+<canvas id="confetti"></canvas>
   <!-- header ---------------------------------------------->
   <div class="page-wrapper">
     <div id="top">
@@ -49,6 +50,7 @@
               <div class="button">
                 <button type="submit" id="registerBtn" class="proposal">登録する</button>
               </div>
+
             </form>
           </div>
 
@@ -71,29 +73,28 @@
         </div>
       </div>
 
-        <!-- バリデーション入れる -->
-        <div class="error-ms" id="countArea"></div>
-        <div class="error-ms" id="result"></div>
-        <!-- バリデーション入れる -->
-        <div class="outputmeal wrapper">
-          <h3>過去の記録</h3>
+      <!-- バリデーション入れる -->
+      <div class="error-ms" id="countArea"></div>
+      <div class="error-ms" id="result"></div>
 
-          <table class="meallog-table">
-            <thead>
-              <tr>
-                <th>日付</th>
-                <th>内容</th>
-                <th>ごみ箱</th>
-              </tr>
-            </thead>
-            <tbody id="mealLogBody">
-              <!-- <tr>
+      <div class="outputmeal wrapper">
+        <h3>過去の記録</h3>
+        <table class="meallog-table">
+          <thead>
+            <tr>
+              <th>日付</th>
+              <th>内容</th>
+              <th>ごみ箱</th>
+            </tr>
+          </thead>
+          <tbody id="mealLogBody">
+            <!-- <tr>
               <td></td>
               <td><br></td>
             </tr> -->
-            </tbody>
-          </table>
-        </div>
+          </tbody>
+        </table>
+      </div>
     </main>
 
     <!-- footer ---------------------------------------------->
@@ -105,7 +106,60 @@
     </footer>
   </div>
 
+<<<<<<< HEAD
+  <!-- JS ------------------------------------------------------------------------------------->
+  <script>
+    // 入力値を画面に表示す
+    const form = document.getElementById('mealForm');
+    const tbody = document.getElementById('mealLogBody');
+    const result = document.getElementById('result');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const inputValue = document.getElementById('meal').value.trim();
+      if (inputValue === "") {
+        result.textContent = "内容を入力してください";
+        return;
+      }
+
+      // 新しい行を作成
+      const newRow = document.createElement('tr');
+
+      // 日付セル
+      const dateCell = document.createElement('td');
+      const today = new Date();
+      dateCell.textContent = `${today.getMonth() + 1}/${today.getDate()}`;
+
+      // 内容セル
+      const contentCell = document.createElement('td');
+      contentCell.innerHTML = inputValue.replace(/\n/g, '<br>');
+
+      // 行にセルを追加
+      newRow.appendChild(dateCell);
+      newRow.appendChild(contentCell);
+
+      // tbody に行を追加
+      tbody.appendChild(newRow);
+
+      // 入力欄を空にする
+      document.getElementById('meal').value = '';
+      result.textContent = "内容が登録され、こつこつバーが増加しました！"
+    });
+
+
+    // 入力値を画面に表示する
+
+
+
+
+
+
+  </script>
+
+=======
   <script src="js/eat.js"></script>
+>>>>>>> main
 </body>
 
 </html>

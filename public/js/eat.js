@@ -3,51 +3,8 @@ let mealCount = 0;
 const form = document.getElementById("mealForm");
 const tbody = document.getElementById("mealLogBody");
 const result = document.getElementById("result");
-const countArea = document.getElementById("countArea");
+const countArea = document.getElementById("countArea"); 
 
-// バーをアニメーションさせる関数
-function animateProgressBar(targetPercentage) {
-  const progress = document.querySelector(".progress");
-  progress.style.width = "0%";
-  let current = 0;  
-
-  const interval = setInterval(() => {
-    current += 1;
-    if (current >= targetPercentage) {
-      current = targetPercentage;
-      clearInterval(interval);
-    }
-    progress.style.width = current + "%";
-
-    if (current > 80) {
-      progress.style.backgroundColor = "#EB489A";
-    } else if (current > 60) {
-      progress.style.backgroundColor = "#58A65C";
-    } else if (current > 40) {
-      progress.style.backgroundColor = "#5383EC";
-    } else if (current > 20) {
-      progress.style.backgroundColor = "#AA3A75";
-    } else {
-      progress.style.backgroundColor = "#F5E24D";
-    }
-  },20);
-}
-
-function updateCount() {
-  mealCount = JSON.parse(localStorage.getItem("meals") || "[]").length;
-  countArea.textContent = `登録数: ${mealCount}件`;
-  animateProgressBar(mealCount);
-}
-
-// localStorage の件数
-window.addEventListener("load", () => {
-  const savedMeals = JSON.parse(localStorage.getItem("meals") || "[]");
-
-  savedMeals.slice().reverse().forEach((item) => addMealRow(item.date, item.detail));
-
-  mealCount = savedMeals.length;
-  updateCount(0, true);
-});
 
 // 登録処理後に呼び出す
 form.addEventListener("submit", function (event) {
@@ -71,6 +28,55 @@ form.addEventListener("submit", function (event) {
 
   updateCount();
 });
+
+// バーをアニメーションさせる関数
+function animateProgressBar(targetPercentage) {
+  const progress = document.querySelector(".progress");
+  progress.style.width = "0%";
+  let current = 0;
+
+  const interval = setInterval(() => {
+    current += 1;
+    if (current >= targetPercentage) {
+      current = targetPercentage;
+      clearInterval(interval);
+    }
+    progress.style.width = current + "%";
+
+    if (current > 80) {
+      progress.style.backgroundColor = "#EB489A";
+    } else if (current > 60) {
+      progress.style.backgroundColor = "#58A65C";
+    } else if (current > 40) {
+      progress.style.backgroundColor = "#5383EC";
+    } else if (current > 20) {
+      progress.style.backgroundColor = "#AA3A75";
+    } else {
+      progress.style.backgroundColor = "#F5E24D";
+    }
+  }, 20);
+}
+
+function updateCount() {
+  const savedMeals = JSON.parse(localStorage.getItem("meals") || "[]");
+  mealCount = savedMeals.length;
+
+  countArea.textContent = `登録数: ${mealCount}件`;
+  animateProgressBar(mealCount);
+}
+
+// localStorage の件数
+window.addEventListener("load", () => {
+  const savedMeals = JSON.parse(localStorage.getItem("meals") || "[]");
+  savedMeals
+    .slice()
+    .reverse()
+    .forEach((item) => addMealRow(item.date, item.detail));
+
+  mealCount = savedMeals.length;
+  updateCount();
+});
+
 
 // 削除処理後に呼び出す
 function addMealRow(date, detail) {
@@ -102,3 +108,5 @@ function addMealRow(date, detail) {
   newRow.appendChild(actionCell);
   tbody.prepend(newRow);
 }
+
+
