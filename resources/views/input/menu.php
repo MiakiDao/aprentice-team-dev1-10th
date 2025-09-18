@@ -6,9 +6,6 @@ $response = $controller->handle($_POST ?? []);
 $result = $response['result'];
 $error  = $response['error'];
 
-$selectedGenre  = $_POST['genre']  ?? '';
-$selectedFood   = $_POST['food']   ?? '';
-$selectedMethod = $_POST['method'] ?? '';
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -92,9 +89,6 @@ $selectedMethod = $_POST['method'] ?? '';
       <div class="section-box">
         <section id="mealoutput">
 
-
-
-
           <div class="button-wrapper">
 
             <button class="shine-button button-electric">
@@ -107,10 +101,6 @@ $selectedMethod = $_POST['method'] ?? '';
               </div>
             </button>
           </div>
-
-
-
-
         </section>
       </div>
 
@@ -129,6 +119,7 @@ $selectedMethod = $_POST['method'] ?? '';
       <p>Copyright © TeamDev1 食事記録アプリ</p>
     </div>
   </footer>
+
   <script src="js/menu.js"></script>
 </body>
 
