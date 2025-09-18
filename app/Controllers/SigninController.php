@@ -1,6 +1,4 @@
 <?php
-
-
 require_once __DIR__ . '/../Models/user.php';
 
 class SigninController
@@ -13,12 +11,8 @@ class SigninController
         //フォームから送られてきた値を受け取る（空なら '' が入る）
         $email    = trim($_POST['email'] ?? '');
         $password = trim($_POST['password'] ?? '');
-
         //入力されたユーザー情報を照合（あったら$user=該当ユーザーの情報を持ってくる）
         $user = User::verify($email, $password);
-
-        //入力されたユーザー情報を照合（あったら$user=該当ユーザーの情報を持ってくる）
-        $user = User::verify($email, $password, $name);
 
         if($user)
         {

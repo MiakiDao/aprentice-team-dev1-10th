@@ -3,6 +3,7 @@
 require_once __DIR__ . '/../app/Controllers/signupController.php';
 require_once __DIR__ . '/../app/Controllers/signinController.php';
 
+
 // ?page=xxx でどのページを表示　① どのページかを読み取る（リクエスト解析）
 $page = $_GET['page'] ?? 'start';
 
@@ -25,7 +26,6 @@ switch ($page) {
             header('Location: /index.php?page=signup');
             exit;
         }
-        break;
     case 'setting':
     $file = $viewsPath . 'set-login/setting.php';
     break;
