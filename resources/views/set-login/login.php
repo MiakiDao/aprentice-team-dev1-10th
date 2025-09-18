@@ -1,24 +1,30 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>login画面UIのみ</title>
-
   <link rel="stylesheet" href="/css/styleset-home.css" />
   <link rel="stylesheet" href="/css/start.css" />
   <link rel="stylesheet" href="/css/login.css" />
-
 </head>
 <body>
   <div class="start">
     <h1 class="title">献立提案アプリ/ログインUIのみ</h1>
 
     <div class="inner">
-      <p id="err" class="login-alert" hidden>メールアドレスまたはパスワードが違います</p>
+      
+       <!-- 入力されたデータが一致しない場合はSigninControllerから発行されたエラー文を表示 -->
+       <?php if (!empty($_SESSION['error'])): ?>
+       <p style="color:red;"><?php echo $_SESSION['error']; ?></p>
+       <?php unset($_SESSION['error']); ?>
+       <?php endif; ?>
 
       <!-- aタグではなく、フォームでPOSTする -->
-      <form method="post" action="/?page=login" id="login-form" novalidate>
+      <form method="post" action="/?page=signin_verify" id="login-form" novalidate>
         <ul class="menu">
           <li class="login-field">
             <label class="login-label" for="email">メールアドレス</label>
@@ -40,6 +46,5 @@
     </div>
   </div>
     <script src="/js/login.js"></script>
-  </div>
 </body>
 </html>
