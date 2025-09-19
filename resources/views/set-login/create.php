@@ -16,7 +16,7 @@
 
     <div class="inner">
       <!-- aタグではなく、フォームでPOSTする -->
-      <form method="post" action="/index.php?page=create" id="signup-form" novalidate>
+      <form method="post" action="/index.php?page=signup_store" id="signup-form" novalidate>
         <ul class="menu">
           <li class="login-field">
             <label class="login-label" for="email">メールアドレス</label>
@@ -67,7 +67,7 @@
       </footer>
     </div>
   </div>
-    <script src="/js/create.js"></script>
+    <!-- <script src="/js/create.js"></script> -->
   </div>
 </body>
 </html>
