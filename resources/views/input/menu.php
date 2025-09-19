@@ -8,6 +8,7 @@ $error  = $response['error'];
 
 $selectedGenre = $_POST['genre'] ?? '';
 $selectedFood = $_POST['food'] ?? '';
+
 $selectedMethod = $_POST['method'] ?? '';
 ?>
 <!DOCTYPE html>
