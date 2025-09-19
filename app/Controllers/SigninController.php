@@ -3,6 +3,7 @@
 require_once __DIR__ . '/../Models/user.php';
 
 class signinController
+
 {
     public function authenticate()
     {
@@ -15,7 +16,10 @@ class signinController
 
         //入力されたユーザー情報を照合（あったら$user=該当ユーザーの情報を持ってくる）
         $user = User::verify($email, $password);
+<<<<<<< HEAD
 
+=======
+>>>>>>> e2c61c6 (Feature/migration (#32))
         if($user)
         {
             // ログイン成功したらユーザー情報をセッションに保存
