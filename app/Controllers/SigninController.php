@@ -1,8 +1,9 @@
 <?php
 
-require_once __DIR__ . '/../Models/User.php';
+require_once __DIR__ . '/../Models/user.php';
 
-class SigninController
+class signinController
+
 {
     public function authenticate()
     {
@@ -12,14 +13,21 @@ class SigninController
         //フォームから送られてきた値を受け取る（空なら '' が入る）
         $email    = trim($_POST['email'] ?? '');
         $password = trim($_POST['password'] ?? '');
+
+        //入力されたユーザー情報を照合（あったら$user=該当ユーザーの情報を持ってくる）
+        $user = User::verify($email, $password);
+
         $name     = trim($_POST['name'] ?? '');
 
         //入力されたユーザー情報を照合（あったら$user=該当ユーザーの情報を持ってくる）
         $user = User::verify($email, $password, $name);
 
+
         // 認証成功ー＞homeへリダイレクト
         if($user)
         {
+            // ログイン成功したらユーザー情報をセッションに保存
+            $_SESSION['user'] = $user;
             header('Location: index.php?page=home');
             exit; //ここで明示的に処理終了
         } else {

@@ -18,7 +18,7 @@
       <p id="err" class="login-alert" hidden>メールアドレスまたはパスワードが違います</p>
 
       <!-- aタグではなく、フォームでPOSTする -->
-      <form method="post" action="/index.php?page=create" id="signup-form" novalidate>
+      <form method="post" action="/index.php?page=signup_store" id="signup-form" novalidate>
         <ul class="menu">
           <li class="login-field">
             <label class="login-label" for="email">メールアドレス</label>
@@ -32,7 +32,8 @@
            <li class="login-field">
             <label class="login-label" for="username">ユーザー名</label>
             <input id="username" class="login-input card-input"
-            type="text" name="username"
+            type="text"
+            name="name"
             placeholder="Hanako1234" required
             minlength="3" maxlength="20"
             pattern="[A-Za-z0-9_]{3,20}"
@@ -52,7 +53,7 @@
       </footer>
     </div>
   </div>
-    <script src="/js/create.js"></script>
+    <!-- <script src="/js/create.js"></script> -->
   </div>
 </body>
 </html>
