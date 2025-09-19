@@ -32,7 +32,8 @@
            <li class="login-field">
             <label class="login-label" for="username">ユーザー名</label>
             <input id="username" class="login-input card-input"
-            type="text" name="username"
+            type="text"
+            name="name"
             placeholder="Hanako1234" required
             minlength="3" maxlength="20"
             pattern="[A-Za-z0-9_]{3,20}"
