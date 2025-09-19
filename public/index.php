@@ -58,7 +58,7 @@ switch ($page) {
         $file = $viewsPath . 'input/eat_1.html';
         break;
     case 'menu':
-        $file = $viewsPath . 'input/menu.php';
+        $file = $viewsPath . 'input/menu_1.html';
         break;
     default:
         $file = $viewsPath . 'start.html';
@@ -69,5 +69,5 @@ switch ($page) {
 if (file_exists($file)) {
     require $file;
 } else {
-    echo "<p>❌ ページが見つかりません</p>";
+    echo "<p>❌ ページが見つかりません ページ指定が間違っています</p>";
 }
