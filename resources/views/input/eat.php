@@ -106,7 +106,7 @@
     </footer>
   </div>
 
-<script src="js/eat.js"></script>
+  <script src="js/eat.js"></script>
 </body>
 
 </html>
