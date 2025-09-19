@@ -1,8 +1,9 @@
 <?php
 
-require_once __DIR__ . '/../Models/User.php';
+require_once __DIR__ . '/../Models/user.php';
 
-class SigninController
+class signinController
+
 {
     public function authenticate()
     {
@@ -15,6 +16,7 @@ class SigninController
 
         //入力されたユーザー情報を照合（あったら$user=該当ユーザーの情報を持ってくる）
         $user = User::verify($email, $password);
+
         $name     = trim($_POST['name'] ?? '');
 
         //入力されたユーザー情報を照合（あったら$user=該当ユーザーの情報を持ってくる）
@@ -37,3 +39,4 @@ class SigninController
         }
     }
 }
+
