@@ -16,10 +16,14 @@ class signinController
 
         //入力されたユーザー情報を照合（あったら$user=該当ユーザーの情報を持ってくる）
         $user = User::verify($email, $password);
-<<<<<<< HEAD
 
-=======
->>>>>>> e2c61c6 (Feature/migration (#32))
+        $name     = trim($_POST['name'] ?? '');
+
+        //入力されたユーザー情報を照合（あったら$user=該当ユーザーの情報を持ってくる）
+        $user = User::verify($email, $password, $name);
+
+
+        // 認証成功ー＞homeへリダイレクト
         if($user)
         {
             // ログイン成功したらユーザー情報をセッションに保存
@@ -35,3 +39,4 @@ class signinController
         }
     }
 }
+

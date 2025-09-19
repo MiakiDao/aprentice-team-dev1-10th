@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../Models/user.php';
 
 class signupController 
+
 {
     public function store(): void  //判定処理つけるか決める
     {

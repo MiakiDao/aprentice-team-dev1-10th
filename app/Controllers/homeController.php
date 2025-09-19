@@ -1,4 +1,15 @@
 <?php
+
+session_start(); // セッション開始（ファイルの先頭で必須）
+// 仮ログイン用（テスト）
+if (!isset($_SESSION['user'])) {
+    $_SESSION['user'] = [
+        'id'    => 1,
+        'name'  => 'Taro',
+        'email' => 'taro@example.com',
+    ];
+}
+
 require_once '/var/www/app/Models/bodyTypeModel.php';
 require_once '/var/www/app/Models/userModel.php';
 require_once '/var/www/app/Models/measurementModel.php';
@@ -26,6 +37,7 @@ class HomeController {
         $error  = '';
         $values = [
             // body_types関連
+
             'protein'       => '',
             'fat'           => '',
             'carbohydrates' => '',
@@ -39,6 +51,8 @@ class HomeController {
             'point'         => '',
 
             // measurements関連
+            'user_name'     => '',
+            'point'         => '',
             'weight'        => '',
             'height'        => '',
             'body_fat'      => '',
