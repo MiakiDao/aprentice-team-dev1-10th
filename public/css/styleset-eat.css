@@ -120,9 +120,7 @@ input {
 .main {
   text-align: center;
   padding-top: 50px;
-  flex: 1;
 }
-
 
 .main-nav ul {
   display: flex;

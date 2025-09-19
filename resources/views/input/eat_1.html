@@ -1,0 +1,430 @@
+<!-- ファイル名HTML → phpに変更お願いします！ -->
+
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eat画面</title>
+
+  <!--CSS-------------------------------- ------------------------------->
+  <style>
+    .start {
+      background: #d9f2de;
+      min-height: 100vh;
+      margin: 0;
+      padding: 10px;
+    }
+
+    .start .title {
+      font-size: 32px;
+      font-weight: bold;
+      text-align: center;
+      background: #fff;
+      width: min(90vw, 700px);
+      margin: auto;
+      padding: 16px 20px;
+      /*4の倍数にしておくと、どんな倍率でも割り切れて崩れにくい。*/
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, .5);
+    }
+
+    .wrapper {
+      width: 70%;
+      margin: 0 auto;
+      padding: 0 4%;
+      box-sizing: border-box;
+    }
+
+    .error-ms {
+      color: #FF0000;
+      font-weight: bold;
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .start .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 rgba(0, 0, 0, .2);
+    }
+
+    .start .card:active {
+      transform: translateY(0);
+      box-shadow: 0 4px 0 rgba(0, 0, 0, .15);
+    }
+
+    .start .start-footer {
+      font-size: small;
+    }
+
+    .main {
+      text-align: center;
+      padding-top: 20px;
+      flex: 1;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    textarea.meal-input {
+      border-radius: 10px;
+      outline: 2px solid #FEBF00;
+      border: 0;
+      outline-offset: 3px;
+      padding: 10px 1rem;
+      transition: 0.25s;
+      width: 500px;
+      height: 50px;
+      margin-bottom: 20px;
+    }
+
+    textarea:focus {
+      outline-offset: 5px;
+      background-color: #fff
+    }
+
+    .form {
+      padding: 10px 5px;
+    }
+
+    .bar {
+      text-align: center;
+    }
+
+    .progress-bar {
+      width: 80%;
+      margin: 0 auto;
+      background-color: #e0e0e0;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 40px;
+      position: relative;
+      outline: 2px solid #FEBF00;
+      outline-offset: 3px;
+      padding: 2px;
+      margin-bottom: 80px;
+
+    }
+
+    .progress {
+      height: 100%;
+      background-color: #F5E24D;
+      width: 0%;
+      transition: width 1s ease;
+      border-radius: 20px;
+    }
+
+    .ticks {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .tick {
+      position: relative;
+      text-align: center;
+      width: 1px;
+    }
+
+    .tick::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      width: 1px;
+      height: 20px;
+      background: #333;
+    }
+
+    #registerBtn {
+      display: inline-block;
+    }
+
+    .submit-field {
+      list-style: none;
+      text-align: center;
+    }
+
+    .card {
+      font-size: clamp(18px, 2.8vw, 24px);
+      color: #000;
+      display: block;
+      text-align: center;
+      background: #fff;
+      text-decoration: none;
+      padding: 16px 24px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, .5);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .section-content {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .outputmeal {
+      text-align: center;
+      width: 50%;
+    }
+
+    .bar h3 {
+      text-align: center;
+    }
+
+    .meallog-table {
+      width: 80%;
+      margin: 0 auto;
+      table-layout: auto;
+      border-collapse: collapse;
+      background-color: #fff;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .meallog-table thead tr {
+      border-radius: 20px;
+    }
+
+    .meallog-table thead th {
+      padding: 10px 12px;
+      background: #f3f4f6;
+      border-bottom: 2px solid #e6e7ea;
+      font-weight: 600;
+      vertical-align: bottom;
+      font-size: 13px;
+
+    }
+
+    .meallog-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #eee;
+      vertical-align: middle;
+      font-size: 14px;
+    }
+
+    .delete-btn {
+      border: none;
+      border-radius: 10px;
+      width: 30px;
+      height: 30px;
+      font-size: 20px;
+    }
+
+
+
+    .start .start-footer {
+      font-size: small;
+      margin-top: 50px;
+      text-align: center;
+    }
+
+
+  </style>
+
+  <!-- HTML-------------------------------- ------------------------------->
+</head>
+
+<body>
+  <div class="start">
+    <h1 class="title">献立提案アプリ/食事記録</h1>
+    <div class="inner">
+      <main>
+        <div class="main wrapper">
+
+          <div class="wrapper">
+            <h3>食事を記録しよう！</h3>
+            <div class="error-ms" id="result"></div>
+            <div class="section-content">
+
+              <form id="mealForm" action="" method="post">
+                <div class="meal">
+                  <textarea name="meal" id="meal" placeholder="食事を入力！" class="meal-input"></textarea>
+                </div>
+
+                <li class="submit-field">
+                  <button type="submit" id="registerBtn" class="card">登録する</button>
+                </li>
+
+              </form>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="bar wrapper">
+          <h3>こつこつ記録バー</h3>
+          <div class="error-ms" id="countArea"></div>
+
+          <div class="progress-bar">
+            <div class="progress"></div>
+            <div class="ticks">
+              <div class="tick">0%</div>
+              <div class="tick">20%</div>
+              <div class="tick">40%</div>
+              <div class="tick">60%</div>
+              <div class="tick">80%</div>
+              <div class="tick">100%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="outputmeal wrapper">
+          <h3>過去の記録</h3>
+          <table class="meallog-table">
+            <thead>
+              <tr>
+                <th>日付</th>
+                <th>内容</th>
+                <th>ごみ箱</th>
+              </tr>
+            </thead>
+            <tbody id="mealLogBody">
+              <!-- <tr>
+              <td></td>
+              <td><br></td>
+            </tr> -->
+            </tbody>
+          </table>
+        </div>
+      </main>
+
+      <footer class="start-footer">
+        <div class="wrapper">
+          <div class="container">© 2025 TeamProject1</div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+
+  <!-- JavaScript-------------------------------- ------------------------------->
+  <script>
+    let mealCount = 0;
+
+    const form = document.getElementById("mealForm");
+    const tbody = document.getElementById("mealLogBody");
+    const result = document.getElementById("result");
+    const countArea = document.getElementById("countArea");
+
+
+    // 登録処理後に呼び出す
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      const inputValue = document.getElementById("meal").value.trim();
+      if (!inputValue) {
+        result.textContent = "内容を入力してください";
+        return;
+      }
+
+      const today = new Date();
+      const dateStr = `${today.getMonth() + 1}/${today.getDate()}`;
+      addMealRow(dateStr, inputValue);
+
+      const savedMeals = JSON.parse(localStorage.getItem("meals") || "[]");
+      savedMeals.unshift({ date: dateStr, detail: inputValue });
+      localStorage.setItem("meals", JSON.stringify(savedMeals));
+
+      document.getElementById("meal").value = "";
+      result.textContent = "内容が登録されました";
+
+      updateCount();
+    });
+
+    // バーをアニメーションさせる関数
+    function animateProgressBar(targetPercentage) {
+      const progress = document.querySelector(".progress");
+      progress.style.width = "0%";
+      let current = 0;
+
+      const interval = setInterval(() => {
+        current += 1;
+        if (current >= targetPercentage) {
+          current = targetPercentage;
+          clearInterval(interval);
+        }
+        progress.style.width = current + "%";
+
+        if (current > 80) {
+          progress.style.backgroundColor = "#EB489A";
+        } else if (current > 60) {
+          progress.style.backgroundColor = "#58A65C";
+        } else if (current > 40) {
+          progress.style.backgroundColor = "#5383EC";
+        } else if (current > 20) {
+          progress.style.backgroundColor = "#AA3A75";
+        } else {
+          progress.style.backgroundColor = "#F5E24D";
+        }
+      }, 20);
+    }
+
+    function updateCount() {
+      const savedMeals = JSON.parse(localStorage.getItem("meals") || "[]");
+      mealCount = savedMeals.length;
+
+      countArea.textContent = `登録数: ${mealCount}件`;
+      animateProgressBar(mealCount);
+    }
+
+    // localStorage の件数
+    window.addEventListener("load", () => {
+      const savedMeals = JSON.parse(localStorage.getItem("meals") || "[]");
+      savedMeals
+        .slice()
+        .reverse()
+        .forEach((item) => addMealRow(item.date, item.detail));
+
+      mealCount = savedMeals.length;
+      updateCount();
+    });
+
+
+    // 削除処理後に呼び出す
+    function addMealRow(date, detail) {
+      const newRow = document.createElement("tr");
+      const dateCell = document.createElement("td");
+      dateCell.textContent = date;
+      const contentCell = document.createElement("td");
+      contentCell.innerHTML = detail.replace(/\n/g, "<br>");
+      const actionCell = document.createElement("td");
+      const delBtn = document.createElement("button");
+      delBtn.className = "delete-btn";
+      delBtn.textContent = "🗑";
+      delBtn.style.cursor = "pointer";
+
+      delBtn.addEventListener("click", () => {
+        newRow.remove();
+        let savedMeals = JSON.parse(localStorage.getItem("meals") || "[]");
+        savedMeals = savedMeals.filter(
+          (m) => !(m.date === date && m.detail === detail)
+        );
+        localStorage.setItem("meals", JSON.stringify(savedMeals));
+
+        result.textContent = "記録を削除しました";
+        updateCount();
+      });
+
+      actionCell.appendChild(delBtn);
+      newRow.appendChild(dateCell);
+      newRow.appendChild(contentCell);
+      newRow.appendChild(actionCell);
+      tbody.prepend(newRow);
+    }
+
+  </script>
+</body>
+
+</html>
