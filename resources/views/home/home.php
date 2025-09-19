@@ -1,5 +1,9 @@
-
-
+<?php
+require_once '/var/www/app/Controllers/homeController.php';
+$controller = new HomeController();
+$data = $controller->handle($_POST);
+$values = $data['values'];
+?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -13,6 +17,42 @@
 
 <body>
   <!-- header ---------------------------------------------->
+   <?php if ($values): ?>
+    <div class="form-img">
+        <img src="<?= htmlspecialchars($values['image_path']) ?>" alt="">
+        <span><?= htmlspecialchars($values['body_type_name']) ?></span>
+    </div>
+
+    <div class="nutrition">
+        <div>たんぱく質: <?= htmlspecialchars($values['protein']) ?>g</div>
+        <div>脂質: <?= htmlspecialchars($values['fat']) ?>g</div>
+        <div>炭水化物: <?= htmlspecialchars($values['carbohydrates']) ?>g</div>
+    </div>
+
+    <div class="body-info">
+    <?php if (!empty($values['user_name'])): ?>
+      ユーザー名: <?= htmlspecialchars($values['user_name']) ?>
+    <?php endif; ?>
+
+    <?php if (!empty($values['weight'])): ?>
+      体重: <?= htmlspecialchars($values['weight']) ?> kg
+    <?php endif; ?>
+
+    <?php if (!empty($values['height'])): ?>
+      身長: <?= htmlspecialchars($values['height']) ?> cm
+    <?php endif; ?>
+
+    <?php if (!empty($values['body_fat'])): ?>
+      体脂肪率: <?= htmlspecialchars($values['body_fat']) ?> %
+    <?php endif; ?>
+
+    <?php if (!empty($values['muscle_mass'])): ?>
+      筋肉量: <?= htmlspecialchars($values['muscle_mass']) ?> kg
+    <?php endif; ?>
+  </div>
+  <?php endif; ?>
+
+
   <div class="page-wrapper">
     <div id="top">
       <div class="page-header wrapper">

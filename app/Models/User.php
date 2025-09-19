@@ -25,7 +25,6 @@ class User
         $stmt = $pdo->prepare('SELECT * FROM users WHERE email = ? LIMIT 1');
         $stmt->execute([$email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
     
         // ユーザーが存在し、パスワードが正しいか確認(password_verify=ハッシュを解釈して、平文パスワードを同じ条件でハッシュ化して比較する関数)
         if ($user && password_verify($password, $user['password'])) {

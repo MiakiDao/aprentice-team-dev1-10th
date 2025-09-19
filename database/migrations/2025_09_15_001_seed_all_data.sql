@@ -103,6 +103,8 @@ INSERT INTO dishes (dish_name, genre_id, main_food_id, method_id) VALUES
 
 -- meal_log
 INSERT INTO meal_log (users_id, detail) VALUES
+<<<<<<< HEAD
 (1, '朝食：ご飯と味噌汁'),
 (2, '昼食：パスタとサラダ'),
 (3, '夕食：餃子とビール');
+

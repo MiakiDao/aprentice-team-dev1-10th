@@ -92,4 +92,5 @@ CREATE TABLE meal_log (
     CONSTRAINT fk_meal_log_user
     FOREIGN KEY (users_id) REFERENCES users(id)
     ON DELETE CASCADE ON UPDATE CASCADE
+
 );

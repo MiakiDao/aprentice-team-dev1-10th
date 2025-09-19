@@ -45,7 +45,7 @@
 
             <form id="mealForm" action="" method="post">
               <div class="meal">
-                <textarea name="meal" id="meal" autocomplete="meal"></textarea>
+                <textarea name="meal" id="meal" placeholder="食事を入力！" class="meal-input"></textarea>
               </div>
               <div class="button">
                 <button type="submit" id="registerBtn" class="proposal">登録する</button>
