@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Create画面UIのみ</title>
+  <title>Create</title>
 
   <link rel="stylesheet" href="/css/styleset-home.css" />
   <link rel="stylesheet" href="/css/start.css" />
@@ -12,33 +12,48 @@
 </head>
 <body>
   <div class="start">
-    <h1 class="title">献立提案アプリ/新規作成UIのみ</h1>
+    <h1 class="title">献立提案アプリ/新規登録画面</h1>
 
     <div class="inner">
-      <p id="err" class="login-alert" hidden>メールアドレスまたはパスワードが違います</p>
-
       <!-- aタグではなく、フォームでPOSTする -->
       <form method="post" action="/index.php?page=create" id="signup-form" novalidate>
         <ul class="menu">
           <li class="login-field">
             <label class="login-label" for="email">メールアドレス</label>
-            <input id="email" class="login-input card-input" type="email" name="email" placeholder="hello@example.com" required />
+            <input id="email"
+            class="login-input card-input"
+            type="email"
+            name="email"
+            placeholder="hello@example.com"
+            required />
           </li>
           <li class="login-field">
             <label class="login-label" for="password">パスワード</label>
-            <input id="password" class="login-input card-input" type="password" name="password" placeholder="8文字以上" required 
-            minlength="8" autocomplete="new-password"/>
+            <input id="password"
+            class="login-input card-input"
+            type="password"
+            name="password"
+            placeholder="8文字以上"
+            required
+            minlength="8"
+            autocomplete="new-password"/>
           </li>
-           <li class="login-field">
+          <li class="login-field">
             <label class="login-label" for="username">ユーザー名</label>
-            <input id="username" class="login-input card-input"
-            type="text" name="username"
-            placeholder="Hanako1234" required
-            minlength="3" maxlength="20"
+            <input id="username"
+            class="login-input card-input"
+            type="text"
+            name="username"
+            placeholder="Hanako1234"
+            required
+            minlength="3"
+            maxlength="20"
             pattern="[A-Za-z0-9_]{3,20}"
             title="半角英数字と _ が使えます(3~20文字)"
-            autocomplete="username" autocapitalize="none"
-            spellcheck="false" inputmode="text"  />
+            autocomplete="username"
+            autocapitalize="none"
+            spellcheck="false"
+            inputmode="text"  />
           </li>
 
           <li class="submit-field">
