@@ -61,6 +61,15 @@ $selectedMethod = $_POST['method'] ?? '';
       box-sizing: border-box;
     }
 
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    h1:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 rgba(0, 0, 0, .2);
+    }
     .container {
       text-align: center;
     }
@@ -76,6 +85,7 @@ $selectedMethod = $_POST['method'] ?? '';
       font-size: 20px;
     }
 
+
     .button {
       text-align: center;
     }
@@ -84,7 +94,6 @@ $selectedMethod = $_POST['method'] ?? '';
       display: inline-block;
       text-align: center;
     }
-
 
     .start .card:hover {
       transform: translateY(-2px);
@@ -120,7 +129,8 @@ $selectedMethod = $_POST['method'] ?? '';
       text-align: center;
     }
 
-    .card {
+    .card,
+    .top-nav {
       font-size: clamp(18px, 2.8vw, 24px);
       color: #000;
       display: block;
@@ -334,7 +344,10 @@ $selectedMethod = $_POST['method'] ?? '';
 
 <body>
   <div class="start">
-    <h1 class="title">献立提案アプリ/献立提案</h1>
+    <a href="/">
+      <h1 class="title">献立提案アプリ/献立提案 🏠</h1>
+    </a>
+
     <div class="inner">
 
       <div class="page-wrapper">
@@ -403,7 +416,7 @@ $selectedMethod = $_POST['method'] ?? '';
                   </strong></p>
                 <?php endif; ?>
               </div>
-              <p>で決定! </p>
+              <p></p>
               <p class="p-small">👈クリックでもう一度探す！👈</p>
 
             </button>
