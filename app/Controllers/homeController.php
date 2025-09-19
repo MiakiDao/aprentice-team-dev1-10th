@@ -1,13 +1,13 @@
 <?php
 session_start(); // セッション開始（ファイルの先頭で必須）
 // 仮ログイン用（テスト）
-if (!isset($_SESSION['user'])) {
-    $_SESSION['user'] = [
-        'id'    => 1,
-        'name'  => 'Taro',
-        'email' => 'taro@example.com',
-    ];
-}
+// if (!isset($_SESSION['user'])) {
+//     $_SESSION['user'] = [
+//         'id'    => 1,
+//         'name'  => 'Taro',
+//         'email' => 'taro@example.com',
+//     ];
+// }
 
 require_once '/var/www/app/Models/bodyTypeModel.php';
 require_once '/var/www/app/Models/userModel.php';
@@ -86,7 +86,8 @@ class HomeController {
         // 体型タイプ
         if (!empty($user['body_type_id'])) {
             $bodyType = $this->bodyTypeModel->getBodyTypeById($user['body_type_id']);
-            if ($bodyType) {
+            
+            if (!empty($bodyType) && is_array($bodyType)) {
                 $values['protein']        = $bodyType['protein'];
                 $values['fat']            = $bodyType['fat'];
                 $values['carbohydrates']  = $bodyType['carbohydrates'];
@@ -97,6 +98,7 @@ class HomeController {
                     2 => '/image/man2.png',
                     3 => '/image/man3.png',
                 ];
+
                 $values['image_path'] = $images[$bodyType['id']] ?? '';
             }
         }
