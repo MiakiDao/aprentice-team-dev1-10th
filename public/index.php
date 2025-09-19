@@ -52,7 +52,7 @@ switch ($page) {
         $file = $viewsPath . 'home/home.php';
         break;
     case 'home-setting':
-        $file = $viewsPath . 'home/setting.php';
+        $file = $viewsPath . 'home/setting_1.php';
         break;
     case 'eat':
         $file = $viewsPath . 'input/eat_1.html';
