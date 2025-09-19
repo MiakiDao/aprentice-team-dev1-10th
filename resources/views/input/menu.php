@@ -1,10 +1,14 @@
 <?php
-require_once '/var/www/app/Controllers/MenuController.php';
+require_once '/var/www/app/Controllers/menuController.php';
 $controller = new MenuController();
 
 $response = $controller->handle($_POST ?? []);
 $result = $response['result'];
 $error  = $response['error'];
+
+$selectedGenre = $_POST['genre'] ?? '';
+$selectedFood = $_POST['food'] ?? '';
+$selectedMethod = $_POST['method'] ?? '';
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -12,7 +16,7 @@ $error  = $response['error'];
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/styleset-input.css">
+  <link rel="stylesheet" href="/css/styleset-menu.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <title>仮)食事記録アプリ | 献立提案</title>
 </head>
@@ -52,71 +56,63 @@ $error  = $response['error'];
 
           <div class="content">
             <form method="post">
-                <label>ジャンル</label>
-                <input type="radio" name="genre" value="1">和風
-                <input type="radio" name="genre" value="2">中華
-                <input type="radio" name="genre" value="3">洋風
+              <h1 class="post-h1">ジャンル</h1>
+              <div class="label-a">
+                <label><input type="radio" name="genre" value="1" <?php if ($selectedGenre == '1') echo 'checked'; ?>>和風</label>
+                <label><input type="radio" name="genre" value="2" <?php if ($selectedGenre == '2') echo 'checked'; ?>>中華</label>
+                <label><input type="radio" name="genre" value="3" <?php if ($selectedGenre == '3') echo 'checked'; ?>>洋風</label>
+              </div>
 
-                <label>主菜</label>
-                <input type="radio" name="food" value="1">肉
-                <input type="radio" name="food" value="2">魚
-                <input type="radio" name="food" value="3">卵
-                <input type="radio" name="food" value="4">豆
+              <h1 class="post-h1">主菜</h1>
+              <div class="label-a">
+                <label><input type="radio" name="food" value="1" <?php if ($selectedFood == '1') echo 'checked'; ?>>肉</label>
+                <label><input type="radio" name="food" value="2" <?php if ($selectedFood == '2') echo 'checked'; ?>>魚</label>
+                <label><input type="radio" name="food" value="3" <?php if ($selectedFood == '3') echo 'checked'; ?>>卵</label>
+                <label><input type="radio" name="food" value="4" <?php if ($selectedFood == '4') echo 'checked'; ?>>豆</label>
+              </div>
 
-                <label>調理法</label>
-                <input type="radio" name="method" value="1">焼く
-                <input type="radio" name="method" value="2">煮る
-                <input type="radio" name="method" value="3">炒める
-                <input type="radio" name="method" value="4">蒸す
+              <h1 class="post-h1">調理法</h1>
+              <div class="label-a">
+                <label><input type="radio" name="method" value="1" <?php if ($selectedMethod == '1') echo 'checked'; ?>>焼く</label>
+                <label><input type="radio" name="method" value="2" <?php if ($selectedMethod == '2') echo 'checked'; ?>>煮る</label>
+                <label><input type="radio" name="method" value="3" <?php if ($selectedMethod == '3') echo 'checked'; ?>>炒める</label>
+                <label><input type="radio" name="method" value="4" <?php if ($selectedMethod == '4') echo 'checked'; ?>>蒸す</label>
+              </div>
 
-                <button type="submit">献立を提案</button>
+
+              <div class="button">
+                <button type="submit" class="proposal">今日の献立を探す</button>
+              </div>
+
             </form>
           </div>
         </div>
       </section>
 
-      <div class="button">
-        <nav class="main-nav">
-          <ul>
-            <li class="proposal"><a href="">今日の献立を探す</a></li>
-          </ul>
-        </nav>
-      </div>
-
-      
-
-
       <div class="section-box">
         <section id="mealoutput">
-          <h3>今日の献立は・・・・</h3>
-          <div class="confirm">
-            <!-- 結果の表示  -->
-            <?php if ($result): ?>
-                <p>今日の献立: <strong><?php echo htmlspecialchars($result); ?></strong></p>
-            <?php endif; ?>
-          </div>
 
+          <div class="button-wrapper">
+
+            <button class="shine-button button-electric">
+              <h3>今日の献立は・・・・</h3>
+              <div class="confirm">
+                <!-- 結果の表示  -->
+                <?php if ($result): ?>
+                  <p>今日の献立: <strong><?php echo htmlspecialchars($result); ?></strong>で決定！</p>
+                <?php endif; ?>
+              </div>
+            </button>
+          </div>
         </section>
       </div>
-      <div class="button">
-        <nav class="main-nav">
-          <ul>
-            <li class="onemore"><a href="">もう一度探す</a></li>
-          </ul>
-        </nav>
-      </div>
-     
 
+      <div class="button">
+        <button type="button" id="resetButton" class="proposal">もう一度探す</button>
+      </div>
 
     </div>
-
-
-
-
-
   </div>
-
-
 
   <!-- footer ---------------------------------------------->
 
@@ -127,6 +123,7 @@ $error  = $response['error'];
     </div>
   </footer>
 
+  <script src="js/menu.js"></script>
 </body>
 
 </html>

@@ -1,23 +1,53 @@
 <?php
-// ?page=xxx でどのページを表示
-$page = $_GET['page'] ?? 'index';
+require_once __DIR__ . '/../app/Controllers/SignupController.php';
+require_once __DIR__ . '/../app/Controllers/SigninController.php';
 
-// コンテナ内の絶対パス
+// ?page=xxx でどのページを表示　① どのページかを読み取る（リクエスト解析）
+$page = $_GET['page'] ?? 'start';
+
+// コンテナ内の絶対パス　② そのページに対応する実ファイルを決める（ルート解決）
 $viewsPath = '/var/www/resources/views/';
 
 // ページごとのファイルパス
 switch ($page) {
-    case 'signup':
-        $file = $viewsPath . 'set-login/signup.php';
+    case 'create':
+        $file = $viewsPath . 'set-login/create.php';
         break;
+
+    // 新規登録ページPOST    
+    case 'signup_store':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            (new SignupController())->store();
+            exit;
+        } //elseで例外処理
+         else {
+            header('Location: /index.php?page=signup');
+            exit;
+        }
+        break;
+
+    case 'create2':
+    $file = $viewsPath . 'set-login/create2.php';
+    break;
+
     case 'login':
         $file = $viewsPath . 'set-login/login.php';
         break;
+    // ログインページPOST
+    case 'signin_verify':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            (new SigninController())->authenticate();
+            exit;
+            } 
+             else {
+                header('Location: /index.php?page=signin');
+                exit;
+                }
     case 'index':
         $file = $viewsPath . 'set-login/index.php';
         break;
-    case 'setting':
-        $file = $viewsPath . 'set-login/setting.php';
+    case 'start':
+        $file = $viewsPath . 'start.html';
         break;
     case 'home':
         $file = $viewsPath . 'home/home.php';
@@ -25,7 +55,6 @@ switch ($page) {
     case 'home-setting':
         $file = $viewsPath . 'home/setting.php';
         break;
-    
     case 'eat':
         $file = $viewsPath . 'input/eat.php';
         break;
@@ -33,7 +62,7 @@ switch ($page) {
         $file = $viewsPath . 'input/menu.php';
         break;
     default:
-        $file = $viewsPath . 'set-login/index.php';
+        $file = $viewsPath . 'start.html';
         break;
 }
 
