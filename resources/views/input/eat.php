@@ -45,7 +45,7 @@
 
             <form id="mealForm" action="" method="post">
               <div class="meal">
-                <textarea name="meal" id="meal" autocomplete="meal"></textarea>
+                <textarea name="meal" id="meal" placeholder="食事を入力！" class="meal-input"></textarea>
               </div>
               <div class="button">
                 <button type="submit" id="registerBtn" class="proposal">登録する</button>
@@ -106,60 +106,7 @@
     </footer>
   </div>
 
-<<<<<<< HEAD
-  <!-- JS ------------------------------------------------------------------------------------->
-  <script>
-    // 入力値を画面に表示す
-    const form = document.getElementById('mealForm');
-    const tbody = document.getElementById('mealLogBody');
-    const result = document.getElementById('result');
-
-    form.addEventListener('submit', function(event) {
-      event.preventDefault();
-
-      const inputValue = document.getElementById('meal').value.trim();
-      if (inputValue === "") {
-        result.textContent = "内容を入力してください";
-        return;
-      }
-
-      // 新しい行を作成
-      const newRow = document.createElement('tr');
-
-      // 日付セル
-      const dateCell = document.createElement('td');
-      const today = new Date();
-      dateCell.textContent = `${today.getMonth() + 1}/${today.getDate()}`;
-
-      // 内容セル
-      const contentCell = document.createElement('td');
-      contentCell.innerHTML = inputValue.replace(/\n/g, '<br>');
-
-      // 行にセルを追加
-      newRow.appendChild(dateCell);
-      newRow.appendChild(contentCell);
-
-      // tbody に行を追加
-      tbody.appendChild(newRow);
-
-      // 入力欄を空にする
-      document.getElementById('meal').value = '';
-      result.textContent = "内容が登録され、こつこつバーが増加しました！"
-    });
-
-
-    // 入力値を画面に表示する
-
-
-
-
-
-
-  </script>
-
-=======
-  <script src="js/eat.js"></script>
->>>>>>> main
+<script src="js/eat.js"></script>
 </body>
 
 </html>
