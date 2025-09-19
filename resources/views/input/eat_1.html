@@ -11,6 +11,16 @@
 
   <!--CSS-------------------------------- ------------------------------->
   <style>
+    html,
+    body {
+      font-size: 100%;
+      height: 100%;
+      margin: 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Courier New", "Noto Sans Mono", monospace;
+      line-height: 1.7;
+      color: black;
+    }
+
     .start {
       background: #d9f2de;
       min-height: 100vh;
@@ -71,6 +81,7 @@
     }
 
     textarea.meal-input {
+      font-size: 1.5rem;
       border-radius: 10px;
       outline: 2px solid #FEBF00;
       border: 0;
@@ -78,7 +89,7 @@
       padding: 10px 1rem;
       transition: 0.25s;
       width: 500px;
-      height: 50px;
+      height: 100px;
       margin-bottom: 20px;
     }
 
@@ -174,7 +185,40 @@
 
     .outputmeal {
       text-align: center;
+      color: #388E3C;
       width: 50%;
+      padding-top: 20px;
+      padding-bottom: 70px;
+      background-color: #B9E4BC;
+
+      --mask:
+        radial-gradient(33.6px at 50% 47px, #000 99%, #0000 101%) calc(50% - 40px) 0/80px 51% repeat-x,
+        radial-gradient(33.6px at 50% -27px, #0000 99%, #000 101%) 50% 20px/80px calc(51% - 20px) repeat-x,
+        radial-gradient(33.6px at 50% calc(100% - 47px), #000 99%, #0000 101%) calc(50% - 40px) 100%/80px 51% repeat-x,
+        radial-gradient(33.6px at 50% calc(100% + 27px), #0000 99%, #000 101%) 50% calc(100% - 20px)/80px calc(51% - 20px) repeat-x;
+      -webkit-mask: var(--mask);
+      mask: var(--mask);
+    }
+
+      @media (max-width: 1023px) {
+        .outputmeal {
+        --mask:
+          radial-gradient(30.24px at 50% 42.3px, #000 99%, #0000 101%) calc(50% - 36px) 0/72px 51% repeat-x,
+          radial-gradient(30.24px at 50% -24.3px, #0000 99%, #000 101%) 50% 18px/72px calc(51% - 18px) repeat-x,
+          radial-gradient(30.24px at 50% calc(100% - 42.3px), #000 99%, #0000 101%) calc(50% - 36px) 100%/72px 51% repeat-x,
+          radial-gradient(30.24px at 50% calc(100% + 24.3px), #0000 99%, #000 101%) 50% calc(100% - 18px)/72px calc(51% - 18px) repeat-x;
+      }
+    }
+    
+
+      @media (max-width: 480px) {
+        .outputmeal {
+        --mask:
+          radial-gradient(16.01px at 50% 22.5px, #000 99%, #0000 101%) calc(50% - 20px) 0/40px 51% repeat-x,
+          radial-gradient(16.01px at 50% -12.5px, #0000 99%, #000 101%) 50% 10px/40px calc(51% - 10px) repeat-x,
+          radial-gradient(16.01px at 50% calc(100% - 22.5px), #000 99%, #0000 101%) calc(50% - 20px) 100%/40px 51% repeat-x,
+          radial-gradient(16.01px at 50% calc(100% + 12.5px), #0000 99%, #000 101%) 50% calc(100% - 10px)/40px calc(51% - 10px) repeat-x;
+      }
     }
 
     .bar h3 {
@@ -191,6 +235,8 @@
       border-spacing: 0;
       border-radius: 20px;
       overflow: hidden;
+      outline: 2px solid #FEBF00;
+      outline-offset: 5px;
     }
 
     .meallog-table thead tr {
@@ -222,14 +268,69 @@
       font-size: 20px;
     }
 
-
-
     .start .start-footer {
       font-size: small;
       margin-top: 50px;
       text-align: center;
     }
 
+
+    .delete-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: rgb(20, 20, 20);
+      border: none;
+      font-weight: 600;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+      cursor: pointer;
+      transition-duration: .3s;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .svgIcon {
+      width: 12px;
+      transition-duration: .3s;
+    }
+
+    .svgIcon path {
+      fill: white;
+    }
+
+    .delete-btn:hover {
+      width: 60px;
+      border-radius: 50px;
+      transition-duration: 0.3s;
+      background-color: #FEBF00;
+      align-items: center;
+    }
+
+    .delete-btn:hover .svgIcon {
+      width: 50px;
+      transition-duration: 0.3s;
+      transform: translateY(50%);
+    }
+
+    .delete-btn::before {
+      text-align: center;
+      position: absolute;
+      top: -30px;
+      content: "Delete";
+      color: white;
+      transition-duration: .3s;
+      font-size: 2px;
+    }
+
+    .delete-btn:hover::before {
+      text-align: center;
+      font-size: 13px;
+      opacity: 1;
+      transform: translateY(40px);
+      transition-duration: .3s;
+    }
 
   </style>
 
@@ -244,13 +345,13 @@
         <div class="main wrapper">
 
           <div class="wrapper">
-            <h3>食事を記録しよう！</h3>
+            <h3>毎日食事を記録してこつこつバーを貯めよう！</h3>
             <div class="error-ms" id="result"></div>
             <div class="section-content">
 
               <form id="mealForm" action="" method="post">
                 <div class="meal">
-                  <textarea name="meal" id="meal" placeholder="食事を入力！" class="meal-input"></textarea>
+                  <textarea name="meal" id="meal" placeholder="🍴" class="meal-input"></textarea>
                 </div>
 
                 <li class="submit-field">
@@ -264,7 +365,7 @@
         </div>
 
         <div class="bar wrapper">
-          <h3>こつこつ記録バー</h3>
+          <!-- <h3>こつこつ記録バー</h3> -->
           <div class="error-ms" id="countArea"></div>
 
           <div class="progress-bar">
@@ -281,7 +382,7 @@
         </div>
 
         <div class="outputmeal wrapper">
-          <h3>過去の記録</h3>
+          <h3>Meal Daily log</h3>
           <table class="meallog-table">
             <thead>
               <tr>
@@ -291,10 +392,7 @@
               </tr>
             </thead>
             <tbody id="mealLogBody">
-              <!-- <tr>
-              <td></td>
-              <td><br></td>
-            </tr> -->
+              <!-- ここにJSでtr td追加される -->
             </tbody>
           </table>
         </div>
@@ -400,9 +498,17 @@
       const contentCell = document.createElement("td");
       contentCell.innerHTML = detail.replace(/\n/g, "<br>");
       const actionCell = document.createElement("td");
+
+
       const delBtn = document.createElement("button");
       delBtn.className = "delete-btn";
-      delBtn.textContent = "🗑";
+      delBtn.innerHTML = `<svg viewBox="0 0 448 512" class="svgIcon">
+      <path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 
+      32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3
+      C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 
+      17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 
+      45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"></path>
+    </svg> `;
       delBtn.style.cursor = "pointer";
 
       delBtn.addEventListener("click", () => {
