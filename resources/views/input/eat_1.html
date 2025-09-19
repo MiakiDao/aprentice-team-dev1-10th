@@ -1,0 +1,537 @@
+<!-- ファイル名HTML → phpに変更お願いします！ -->
+<!-- ホームに戻るボタンの追加をお願いします！ -->
+
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eat画面</title>
+
+  <!--CSS-------------------------------- ------------------------------->
+  <style>
+    html,
+    body {
+      font-size: 100%;
+      height: 100%;
+      margin: 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Courier New", "Noto Sans Mono", monospace;
+      line-height: 1.7;
+      color: black;
+    }
+
+    .start {
+      background: #d9f2de;
+      min-height: 100vh;
+      margin: 0;
+      padding: 10px;
+    }
+
+    .start .title {
+      font-size: 32px;
+      font-weight: bold;
+      text-align: center;
+      background: #fff;
+      width: min(90vw, 700px);
+      margin: auto;
+      padding: 16px 20px;
+      /*4の倍数にしておくと、どんな倍率でも割り切れて崩れにくい。*/
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, .5);
+    }
+
+    .wrapper {
+      width: 70%;
+      margin: 0 auto;
+      padding: 0 4%;
+      box-sizing: border-box;
+    }
+
+    .error-ms {
+      color: #FF0000;
+      font-weight: bold;
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .start .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 rgba(0, 0, 0, .2);
+    }
+
+    .start .card:active {
+      transform: translateY(0);
+      box-shadow: 0 4px 0 rgba(0, 0, 0, .15);
+    }
+
+    .start .start-footer {
+      font-size: small;
+    }
+
+    .main {
+      text-align: center;
+      padding-top: 20px;
+      flex: 1;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    textarea.meal-input {
+      font-size: 1.5rem;
+      border-radius: 10px;
+      outline: 2px solid #FEBF00;
+      border: 0;
+      outline-offset: 3px;
+      padding: 10px 1rem;
+      transition: 0.25s;
+      width: 500px;
+      height: 100px;
+      margin-bottom: 20px;
+    }
+
+    textarea:focus {
+      outline-offset: 5px;
+      background-color: #fff
+    }
+
+    .form {
+      padding: 10px 5px;
+    }
+
+    .bar {
+      text-align: center;
+    }
+
+    .progress-bar {
+      width: 80%;
+      margin: 0 auto;
+      background-color: #e0e0e0;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 40px;
+      position: relative;
+      outline: 2px solid #FEBF00;
+      outline-offset: 3px;
+      padding: 2px;
+      margin-bottom: 80px;
+
+    }
+
+    .progress {
+      height: 100%;
+      background-color: #F5E24D;
+      width: 0%;
+      transition: width 1s ease;
+      border-radius: 20px;
+    }
+
+    .ticks {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .tick {
+      position: relative;
+      text-align: center;
+      width: 1px;
+    }
+
+    .tick::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      width: 1px;
+      height: 20px;
+      background: #333;
+    }
+
+    #registerBtn {
+      display: inline-block;
+    }
+
+    .submit-field {
+      list-style: none;
+      text-align: center;
+    }
+
+    .card {
+      font-size: clamp(18px, 2.8vw, 24px);
+      color: #000;
+      display: block;
+      text-align: center;
+      background: #fff;
+      text-decoration: none;
+      padding: 16px 24px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, .5);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .section-content {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .outputmeal {
+      text-align: center;
+      color: #388E3C;
+      width: 50%;
+      padding-top: 20px;
+      padding-bottom: 70px;
+      background-color: #B9E4BC;
+
+      --mask:
+        radial-gradient(33.6px at 50% 47px, #000 99%, #0000 101%) calc(50% - 40px) 0/80px 51% repeat-x,
+        radial-gradient(33.6px at 50% -27px, #0000 99%, #000 101%) 50% 20px/80px calc(51% - 20px) repeat-x,
+        radial-gradient(33.6px at 50% calc(100% - 47px), #000 99%, #0000 101%) calc(50% - 40px) 100%/80px 51% repeat-x,
+        radial-gradient(33.6px at 50% calc(100% + 27px), #0000 99%, #000 101%) 50% calc(100% - 20px)/80px calc(51% - 20px) repeat-x;
+      -webkit-mask: var(--mask);
+      mask: var(--mask);
+    }
+
+      @media (max-width: 1023px) {
+        .outputmeal {
+        --mask:
+          radial-gradient(30.24px at 50% 42.3px, #000 99%, #0000 101%) calc(50% - 36px) 0/72px 51% repeat-x,
+          radial-gradient(30.24px at 50% -24.3px, #0000 99%, #000 101%) 50% 18px/72px calc(51% - 18px) repeat-x,
+          radial-gradient(30.24px at 50% calc(100% - 42.3px), #000 99%, #0000 101%) calc(50% - 36px) 100%/72px 51% repeat-x,
+          radial-gradient(30.24px at 50% calc(100% + 24.3px), #0000 99%, #000 101%) 50% calc(100% - 18px)/72px calc(51% - 18px) repeat-x;
+      }
+    }
+    
+
+      @media (max-width: 480px) {
+        .outputmeal {
+        --mask:
+          radial-gradient(16.01px at 50% 22.5px, #000 99%, #0000 101%) calc(50% - 20px) 0/40px 51% repeat-x,
+          radial-gradient(16.01px at 50% -12.5px, #0000 99%, #000 101%) 50% 10px/40px calc(51% - 10px) repeat-x,
+          radial-gradient(16.01px at 50% calc(100% - 22.5px), #000 99%, #0000 101%) calc(50% - 20px) 100%/40px 51% repeat-x,
+          radial-gradient(16.01px at 50% calc(100% + 12.5px), #0000 99%, #000 101%) 50% calc(100% - 10px)/40px calc(51% - 10px) repeat-x;
+      }
+    }
+
+    .bar h3 {
+      text-align: center;
+    }
+
+    .meallog-table {
+      width: 80%;
+      margin: 0 auto;
+      table-layout: auto;
+      border-collapse: collapse;
+      background-color: #fff;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 20px;
+      overflow: hidden;
+      outline: 2px solid #FEBF00;
+      outline-offset: 5px;
+    }
+
+    .meallog-table thead tr {
+      border-radius: 20px;
+    }
+
+    .meallog-table thead th {
+      padding: 10px 12px;
+      background: #f3f4f6;
+      border-bottom: 2px solid #e6e7ea;
+      font-weight: 600;
+      vertical-align: bottom;
+      font-size: 13px;
+
+    }
+
+    .meallog-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #eee;
+      vertical-align: middle;
+      font-size: 14px;
+    }
+
+    .delete-btn {
+      border: none;
+      border-radius: 10px;
+      width: 30px;
+      height: 30px;
+      font-size: 20px;
+    }
+
+    .start .start-footer {
+      font-size: small;
+      margin-top: 50px;
+      text-align: center;
+    }
+
+
+    .delete-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: rgb(20, 20, 20);
+      border: none;
+      font-weight: 600;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+      cursor: pointer;
+      transition-duration: .3s;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .svgIcon {
+      width: 12px;
+      transition-duration: .3s;
+    }
+
+    .svgIcon path {
+      fill: white;
+    }
+
+    .delete-btn:hover {
+      width: 60px;
+      border-radius: 50px;
+      transition-duration: 0.3s;
+      background-color: #FEBF00;
+      align-items: center;
+    }
+
+    .delete-btn:hover .svgIcon {
+      width: 50px;
+      transition-duration: 0.3s;
+      transform: translateY(50%);
+    }
+
+    .delete-btn::before {
+      text-align: center;
+      position: absolute;
+      top: -30px;
+      content: "Delete";
+      color: white;
+      transition-duration: .3s;
+      font-size: 2px;
+    }
+
+    .delete-btn:hover::before {
+      text-align: center;
+      font-size: 13px;
+      opacity: 1;
+      transform: translateY(40px);
+      transition-duration: .3s;
+    }
+
+  </style>
+
+  <!-- HTML-------------------------------- ------------------------------->
+</head>
+
+<body>
+  <div class="start">
+    <h1 class="title">献立提案アプリ/食事記録</h1>
+    <div class="inner">
+      <main>
+        <div class="main wrapper">
+
+          <div class="wrapper">
+            <h3>毎日食事を記録してこつこつバーを貯めよう！</h3>
+            <div class="error-ms" id="result"></div>
+            <div class="section-content">
+
+              <form id="mealForm" action="" method="post">
+                <div class="meal">
+                  <textarea name="meal" id="meal" placeholder="🍴" class="meal-input"></textarea>
+                </div>
+
+                <li class="submit-field">
+                  <button type="submit" id="registerBtn" class="card">登録する</button>
+                </li>
+
+              </form>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="bar wrapper">
+          <!-- <h3>こつこつ記録バー</h3> -->
+          <div class="error-ms" id="countArea"></div>
+
+          <div class="progress-bar">
+            <div class="progress"></div>
+            <div class="ticks">
+              <div class="tick">0%</div>
+              <div class="tick">20%</div>
+              <div class="tick">40%</div>
+              <div class="tick">60%</div>
+              <div class="tick">80%</div>
+              <div class="tick">100%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="outputmeal wrapper">
+          <h3>Meal Daily log</h3>
+          <table class="meallog-table">
+            <thead>
+              <tr>
+                <th>日付</th>
+                <th>内容</th>
+                <th>ごみ箱</th>
+              </tr>
+            </thead>
+            <tbody id="mealLogBody">
+              <!-- ここにJSでtr td追加される -->
+            </tbody>
+          </table>
+        </div>
+      </main>
+
+      <footer class="start-footer">
+        <div class="wrapper">
+          <div class="container">© 2025 TeamProject1</div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+
+  <!-- JavaScript-------------------------------- ------------------------------->
+  <script>
+    let mealCount = 0;
+
+    const form = document.getElementById("mealForm");
+    const tbody = document.getElementById("mealLogBody");
+    const result = document.getElementById("result");
+    const countArea = document.getElementById("countArea");
+
+
+    // 登録処理後に呼び出す
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      const inputValue = document.getElementById("meal").value.trim();
+      if (!inputValue) {
+        result.textContent = "内容を入力してください";
+        return;
+      }
+
+      const today = new Date();
+      const dateStr = `${today.getMonth() + 1}/${today.getDate()}`;
+      addMealRow(dateStr, inputValue);
+
+      const savedMeals = JSON.parse(localStorage.getItem("meals") || "[]");
+      savedMeals.unshift({ date: dateStr, detail: inputValue });
+      localStorage.setItem("meals", JSON.stringify(savedMeals));
+
+      document.getElementById("meal").value = "";
+      result.textContent = "内容が登録されました";
+
+      updateCount();
+    });
+
+    // バーをアニメーションさせる関数
+    function animateProgressBar(targetPercentage) {
+      const progress = document.querySelector(".progress");
+      progress.style.width = "0%";
+      let current = 0;
+
+      const interval = setInterval(() => {
+        current += 1;
+        if (current >= targetPercentage) {
+          current = targetPercentage;
+          clearInterval(interval);
+        }
+        progress.style.width = current + "%";
+
+        if (current > 80) {
+          progress.style.backgroundColor = "#EB489A";
+        } else if (current > 60) {
+          progress.style.backgroundColor = "#58A65C";
+        } else if (current > 40) {
+          progress.style.backgroundColor = "#5383EC";
+        } else if (current > 20) {
+          progress.style.backgroundColor = "#AA3A75";
+        } else {
+          progress.style.backgroundColor = "#F5E24D";
+        }
+      }, 20);
+    }
+
+    function updateCount() {
+      const savedMeals = JSON.parse(localStorage.getItem("meals") || "[]");
+      mealCount = savedMeals.length;
+
+      countArea.textContent = `登録数: ${mealCount}件`;
+      animateProgressBar(mealCount);
+    }
+
+    // localStorage の件数
+    window.addEventListener("load", () => {
+      const savedMeals = JSON.parse(localStorage.getItem("meals") || "[]");
+      savedMeals
+        .slice()
+        .reverse()
+        .forEach((item) => addMealRow(item.date, item.detail));
+
+      mealCount = savedMeals.length;
+      updateCount();
+    });
+
+
+    // 削除処理後に呼び出す
+    function addMealRow(date, detail) {
+      const newRow = document.createElement("tr");
+      const dateCell = document.createElement("td");
+      dateCell.textContent = date;
+      const contentCell = document.createElement("td");
+      contentCell.innerHTML = detail.replace(/\n/g, "<br>");
+      const actionCell = document.createElement("td");
+
+
+      const delBtn = document.createElement("button");
+      delBtn.className = "delete-btn";
+      delBtn.innerHTML = `<svg viewBox="0 0 448 512" class="svgIcon">
+      <path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 
+      32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3
+      C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 
+      17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 
+      45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"></path>
+    </svg> `;
+      delBtn.style.cursor = "pointer";
+
+      delBtn.addEventListener("click", () => {
+        newRow.remove();
+        let savedMeals = JSON.parse(localStorage.getItem("meals") || "[]");
+        savedMeals = savedMeals.filter(
+          (m) => !(m.date === date && m.detail === detail)
+        );
+        localStorage.setItem("meals", JSON.stringify(savedMeals));
+
+        result.textContent = "記録を削除しました";
+        updateCount();
+      });
+
+      actionCell.appendChild(delBtn);
+      newRow.appendChild(dateCell);
+      newRow.appendChild(contentCell);
+      newRow.appendChild(actionCell);
+      tbody.prepend(newRow);
+    }
+
+  </script>
+</body>
+
+</html>

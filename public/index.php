@@ -20,15 +20,15 @@ switch ($page) {
             (new SignupController())->store();
             exit;
         } //elseで例外処理
-         else {
+        else {
             header('Location: /index.php?page=signup');
             exit;
         }
         break;
 
     case 'create2':
-    $file = $viewsPath . 'set-login/create2.php';
-    break;
+        $file = $viewsPath . 'set-login/create2.php';
+        break;
 
     case 'login':
         $file = $viewsPath . 'set-login/login.php';
@@ -38,11 +38,10 @@ switch ($page) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             (new SigninController())->authenticate();
             exit;
-            } 
-             else {
-                header('Location: /index.php?page=signin');
-                exit;
-                }
+        } else {
+            header('Location: /index.php?page=signin');
+            exit;
+        }
     case 'index':
         $file = $viewsPath . 'set-login/index.php';
         break;
@@ -56,10 +55,10 @@ switch ($page) {
         $file = $viewsPath . 'home/setting.php';
         break;
     case 'eat':
-        $file = $viewsPath . 'input/eat.php';
+        $file = $viewsPath . 'input/eat_1.html';
         break;
     case 'menu':
-        $file = $viewsPath . 'input/menu.php';
+        $file = $viewsPath . 'input/menu_1.html';
         break;
     default:
         $file = $viewsPath . 'start.html';
@@ -70,5 +69,5 @@ switch ($page) {
 if (file_exists($file)) {
     require $file;
 } else {
-    echo "<p>❌ ページが見つかりません</p>";
+    echo "<p>❌ ページが見つかりません ページ指定が間違っています</p>";
 }
