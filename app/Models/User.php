@@ -17,7 +17,7 @@ class User
         return (int)$pdo->lastInsertId();
     }
 
-    public static function verify(string $email, string $password, string $name)
+    public static function verify(string $email, string $password)
     {
         $pdo = DB::conn();
 
