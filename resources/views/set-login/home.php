@@ -13,9 +13,8 @@
   <div class="topbar-inner">
     <div class="brand">献立提案アプリ/ホーム画面</div>
     <div class="spacer"></div>
-    <button class="top-link top-link--ghost" type="button">選択画面</button>
-    <button class="top-link top-link--accent" type="button">ユーザー登録</button>
-  </div>
+    <button type="button" class="top-link top-link--accent" id="go-setting">ユーザー登録</button>
+  </div>  </div>
 </header>
 
 <main class="canvas">
@@ -25,14 +24,16 @@
         <img src="/image/man2.png" alt="キャラクター">
       </aside>
 
-      <section class="board">
-        <h2>一日の摂取カロリー</h2>
-        <ul class="nutri">
-          <li>タンパク質</li>
-          <li>糖質</li>
-          <li>脂質</li>
-        </ul>
-      </section>
+<section class="board">
+  <ul class="nutri"
+    data-protein="<?= htmlspecialchars((string)($macros['protein'] ?? ''), ENT_QUOTES, 'UTF-8') ?>"
+    data-carbs="<?= htmlspecialchars((string)($macros['carbs']   ?? ''), ENT_QUOTES, 'UTF-8') ?>"
+    data-fat="<?= htmlspecialchars((string)($macros['fat']       ?? ''), ENT_QUOTES, 'UTF-8') ?>">
+    <li>タンパク質：<?= htmlspecialchars((string)($macros['protein'] ?? '-'), ENT_QUOTES, 'UTF-8') ?>g</li>
+    <li>糖質：<?= htmlspecialchars((string)($macros['carbs']   ?? '-'), ENT_QUOTES, 'UTF-8') ?>g</li>
+    <li>脂質：<?= htmlspecialchars((string)($macros['fat']     ?? '-'), ENT_QUOTES, 'UTF-8') ?>g</li>
+  </ul>
+</section>
 
       <aside class="stats">
         <ul class="metrics">
@@ -44,17 +45,22 @@
       </aside>
 
       <div class="kotsu-row span-all">
-        <div class="kotsu">
-          <div class="fill" aria-hidden="true"></div>
-          <div class="label">コツコツバー</div>
+        <div class="kotsu" role="status" aria-live="polite">
+          <div class="kotsu-head">
+            <span class="label">コツコツバー</span>
+            <span id="countArea" class="count">記録数: 0件</span>
+          </div>
+          <div class="bar">
+            <div class="progress" style="width:0%"></div>
+          </div>
         </div>
         <div class="divider" aria-hidden="true"></div>
         <div></div>
       </div>
 
       <div class="actions span-all">
-        <button type="button" class="btn-login">今日の食事を入力する</button>
-        <button type="button" class="btn-login">献立提案してもらう</button>
+        <a href="/index.php?page=eat"  class="btn-login">今日の食事を入力する</a>
+        <a href="/index.php?page=menu" class="btn-login">献立提案してもらう</a>
       </div>
     </div>
 

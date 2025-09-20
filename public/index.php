@@ -23,7 +23,7 @@ switch ($page) {
     case 'create2':
         $file = $viewsPath . 'set-login/create2.php';
         break;
-case 'create2_store':
+    case 'create2_store':
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: /index.php?page=home');
         exit;
@@ -32,6 +32,22 @@ case 'create2_store':
         exit;
     }
     break;
+    switch ($page) {
+    case 'setting':
+        $file = $viewsPath . 'home/setting.php';
+        break;
+    case 'eat':
+        $file = $viewsPath . 'input/eat.php';
+        break;
+    case 'menu':
+        $file = $viewsPath . 'input/menu.php';
+        break;
+    case 'home':
+        $file = $viewsPath . 'home/home.php';
+        break;
+    default:
+        $file = $viewsPath . 'set-login/login.php';
+    }
 
 
     // 新規登録ページPOST    
