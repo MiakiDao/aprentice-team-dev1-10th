@@ -17,40 +17,6 @@ $values = $data['values'];
 
 <body>
   <!-- header ---------------------------------------------->
-   <?php if ($values): ?>
-    <div class="form-img">
-        <img src="<?= htmlspecialchars($values['image_path']) ?>" alt="">
-        <span><?= htmlspecialchars($values['body_type_name']) ?></span>
-    </div>
-
-    <div class="nutrition">
-        <div>たんぱく質: <?= htmlspecialchars($values['protein']) ?>g</div>
-        <div>脂質: <?= htmlspecialchars($values['fat']) ?>g</div>
-        <div>炭水化物: <?= htmlspecialchars($values['carbohydrates']) ?>g</div>
-    </div>
-
-    <div class="body-info">
-    <?php if (!empty($values['user_name'])): ?>
-      ユーザー名: <?= htmlspecialchars($values['user_name']) ?>
-    <?php endif; ?>
-
-    <?php if (!empty($values['weight'])): ?>
-      体重: <?= htmlspecialchars($values['weight']) ?> kg
-    <?php endif; ?>
-
-    <?php if (!empty($values['height'])): ?>
-      身長: <?= htmlspecialchars($values['height']) ?> cm
-    <?php endif; ?>
-
-    <?php if (!empty($values['body_fat'])): ?>
-      体脂肪率: <?= htmlspecialchars($values['body_fat']) ?> %
-    <?php endif; ?>
-
-    <?php if (!empty($values['muscle_mass'])): ?>
-      筋肉量: <?= htmlspecialchars($values['muscle_mass']) ?> kg
-    <?php endif; ?>
-  </div>
-  <?php endif; ?>
 
 
   <div class="page-wrapper">
@@ -90,8 +56,8 @@ $values = $data['values'];
           <h3>一日の目標摂取量</h3>
           <div class="section-content">
             <div class="form-img">
-              <img src="/image/man2.png" alt="">
-              <span>マッチョ</span>
+              <img src="<?= htmlspecialchars($values['image_path']) ?>" alt="">
+              <span><?= htmlspecialchars($values['body_type_name']) ?></span>
             </div>
 
             <form action="">
@@ -103,17 +69,17 @@ $values = $data['values'];
                 </div>
                 <div class="form">
                   <label for="pro">たんぱく質</label>
-                  <input type="number" name="pro" id="pro">
+                  <input type="number" name="pro" id="pro" value="<?= htmlspecialchars($values['protein']) ?>">
                   <span>g</span>
                 </div>
                 <div class="form">
                   <label for="fat">脂質　　　</label>
-                  <input type="number" name="fat" id="fat">
+                  <input type="number" name="fat" id="fat" value="<?= htmlspecialchars($values['fat']) ?>">
                   <span>g</span>
                 </div>
                 <div class="form">
                   <label for="carb0">炭水化物　</label>
-                  <input type="number" name="carbo" id="carbo">
+                  <input type="number" name="carbo" id="carbo" value="<?= htmlspecialchars($values['carbohydrates']) ?>">
                   <span>g</span>
                 </div>
               </div>
@@ -141,22 +107,22 @@ $values = $data['values'];
             <div class="measure">
               <div class="form">
                 <label for="">体重　　</label>
-                <input type="number" name="weight" id="weight">
+                <input type="number" name="weight" id="weight" value="<?= htmlspecialchars($values['weight']) ?>">
                 <span>kg</span>
               </div>
               <div class="form">
                 <label for="height">身長　　</label>
-                <input type="number" name="height" id="heightt">
+                <input type="number" name="height" id="heightt" value="<?= htmlspecialchars($values['height']) ?>">
                 <span>cm</span>
               </div>
               <div class="form">
                 <label for="">体脂肪率　</label>
-                <input type="number" name="bodyFat" id="bodyFat">
+                <input type="number" name="bodyFat" id="bodyFat" value="<?= htmlspecialchars($values['body_fat']) ?>">
                 <span>%</span>
               </div>
               <div class="form">
                 <label for="">筋肉量　</label>
-                <input type="number" name="muscle" id="muscle">
+                <input type="number" name="muscle" id="muscle" value="<?= htmlspecialchars($values['muscle_mass']) ?>">
                 <span>kg</span>
               </div>
             </div>
