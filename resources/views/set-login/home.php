@@ -53,8 +53,8 @@
       </div>
 
       <div class="actions span-all">
-        <button type="button" class="btn-login">今日の食事を入力する</button>
-        <button type="button" class="btn-login">献立提案してもらう</button>
+        <a href="index.php?page=eat"><button type="button" class="btn-login">今日の食事を入力する</button></a>
+        <a href="index.php?page=menu"><button type="button" class="btn-login">献立提案してもらう</button></a>
       </div>
     </div>
 
