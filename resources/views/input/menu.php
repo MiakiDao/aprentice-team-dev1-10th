@@ -1,15 +1,10 @@
 <?php
-require_once '/var/www/app/Controllers/menuController.php';
-$controller = new MenuController();
+$result = [];
+$error  = null;
 
-$response = $controller->handle($_POST ?? []);
-$result = $response['result'];
-$error  = $response['error'];
-
-$selectedGenre = $_POST['genre'] ?? '';
-$selectedFood = $_POST['food'] ?? '';
+$selectedGenre  = $_POST['genre']  ?? '';
+$selectedFood   = $_POST['food']   ?? '';
 $selectedMethod = $_POST['method'] ?? '';
-
 ?>
 
 <!DOCTYPE html>

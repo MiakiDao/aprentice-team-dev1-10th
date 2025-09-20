@@ -3,6 +3,7 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,17 +12,18 @@ session_start();
   <link rel="stylesheet" href="/css/start.css" />
   <link rel="stylesheet" href="/css/login.css" />
 </head>
+
 <body>
   <div class="start">
     <h1 class="title">献立提案アプリ/ログイン</h1>
 
     <div class="inner">
-      
-       <!-- 入力されたデータが一致しない場合はSigninControllerから発行されたエラー文を表示 -->
-       <?php if (!empty($_SESSION['error'])): ?>
-       <p style="color:red;"><?php echo $_SESSION['error']; ?></p>
-       <?php unset($_SESSION['error']); ?>
-       <?php endif; ?>
+
+      <!-- 入力されたデータが一致しない場合はSigninControllerから発行されたエラー文を表示 -->
+      <?php if (!empty($_SESSION['error'])): ?>
+        <p style="color:red;"><?php echo $_SESSION['error']; ?></p>
+        <?php unset($_SESSION['error']); ?>
+      <?php endif; ?>
 
       <!-- aタグではなく、フォームでPOSTする -->
       <form method="post" action="/index.php?page=signin_verify" id="login-form" novalidate>
@@ -45,6 +47,7 @@ session_start();
       </footer>
     </div>
   </div>
-    <script src="/js/login.js"></script>
+  <script src="/js/login.js"></script>
 </body>
+
 </html>
