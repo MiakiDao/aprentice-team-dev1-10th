@@ -1,11 +1,11 @@
 <?php
-require_once '/var/www/app/Controllers/signupController.php';
-require_once '/var/www/app/Controllers/signinController.php';
+// require_once __DIR__ . '/../app/Controllers/signupController.php';
+// require_once __DIR__ . '/../app/Controllers/signinController.php';
 
-require_once '/var/www/app/Controllers/settingController.php';
-require_once '/var/www/app/Controllers/signoutController.php';
+// require_once __DIR__ . '/../app/Controllers/settingController.php';
+// require_once __DIR__ . '/../app/Controllers/signoutController.php';
 
-require_once '/var/www/app/Controllers/homesettingController.php';
+// require_once __DIR__ . '/../app/Controllers/homesettingController.php';
 
 
 // ?page=xxx でどのページを表示　① どのページかを読み取る（リクエスト解析）
@@ -20,18 +20,29 @@ switch ($page) {
     case 'create':
         $file = $viewsPath . 'set-login/create.php';
         break;
+    case 'create2':
+        $file = $viewsPath . 'set-login/create2.php';
+        break;
+case 'create2_store':
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        header('Location: /index.php?page=home');
+        exit;
+    } else {
+        header('Location: /index.php?page=create2');
+        exit;
+    }
+    break;
+
 
     // 新規登録ページPOST    
-    case 'signup_store':
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            (new signupController())->store();
-            exit;
-        } //elseで例外処理
-        else {
-            header('Location: /index.php?page=signup');
-            exit;
-        }
-
+case 'signup_store':
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        header('Location: /index.php?page=create2');
+        exit;
+    } else {
+        header('Location: /index.php?page=create');
+        exit;
+    }
     //理想体型・身長・体重登録ページGET
     case 'setting':
     $file = $viewsPath . 'set-login/setting.php';
@@ -67,9 +78,8 @@ switch ($page) {
         break;
     case 'start':
         $file = $viewsPath . 'start.html';
-        break;
     case 'home':
-        $file = $viewsPath . 'home/home.php';
+        $file = $viewsPath . 'set-login/home.php';
         break;
     
     // ユーザー情報再設定ページGET
