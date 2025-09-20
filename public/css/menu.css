@@ -1,7 +1,4 @@
-@charset "UTF-8";
-
-/* 全体--------------------------------------------- */
-html,
+< !--CSS-------------------------------- -------------------------------><style>html,
 body {
   font-size: 100%;
   height: 100%;
@@ -11,6 +8,26 @@ body {
   color: black;
 }
 
+.start {
+  background: #d9f2de;
+  min-height: 100vh;
+  margin: 0;
+  padding: 10px;
+}
+
+.start .title {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  background: #fff;
+  width: min(90vw, 700px);
+  margin: auto;
+  padding: 16px 20px;
+  /*4の倍数にしておくと、どんな倍率でも割り切れて崩れにくい。*/
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .5);
+}
+
 .wrapper {
   width: 70%;
   margin: 0 auto;
@@ -18,24 +35,18 @@ body {
   box-sizing: border-box;
 }
 
-.page-wrapper {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-
-ul li ,
-button {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
 a {
   text-decoration: none;
+  color: black;
 }
 
-img {
-  width: 100%;
+h1:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 rgba(0, 0, 0, .2);
+}
+
+.container {
+  text-align: center;
 }
 
 .error-ms {
@@ -45,135 +56,74 @@ img {
   text-align: center;
 }
 
-/*header--------------------------------------------- */
-#top {
-  height: 120px;
+h1 {
+  font-size: 20px;
 }
 
-h1 img {
-  width: 200px;
+
+.button {
+  text-align: center;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+button.card {
+  display: inline-block;
+  text-align: center;
 }
 
-.page-header {
-  justify-content: space-between;
-  max-width: 100%;
-  margin: 0 auto;
-  align-items: center;
+.start .card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 rgba(0, 0, 0, .2);
 }
 
-.top-nav ul {
-  display: flex;
-  list-style: none;
-  padding: 0;
+.start .card:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, .15);
 }
 
-.top-nav li {
-  margin-left: 10px;
-  background-color: #2D8C3D;
-  padding: 8px 35px;
-  border-radius: 30px;
-}
-
-.top-nav li a {
-  color: #fff;
-}
-
-.top-nav .logout {
-  background-color: #fff;
-  border: #2D8C3D 1px solid;
-}
-
-.top-nav .logout a {
-  color: #2D8C3D;
-}
-
-/*banner--------------------------------------------- */
-.banner {
-  display: flex;
-  background-color: #2D8C3D;
-  color: #fff;
-  height: 120px;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.banner h2 {
-  font-size: 50px;
-  margin: 0;
-  letter-spacing: 0.2em;
-
-}
-
-/*main--------------------------------------------- */
-main {
-  background: linear-gradient(to bottom, #f8f8f8, #e0e0e0);
-}
-
-input {
-  border: 0.4px solid #999999;
-  border-radius: 20px;
+.start .start-footer {
+  font-size: small;
 }
 
 .main {
   text-align: center;
-  padding-top: 50px;
+  padding-top: 20px;
   flex: 1;
-}
-
-
-.main-nav ul {
-  display: flex;
-  padding-bottom: 40px;
-  list-style: none;
-  display: flex;
-  justify-content: center;
-}
-
-.main-nav li {
-  margin-left: 30px;
-  background-color: #2D8C3D;
-  padding: 16px 95px;
-  border-radius: 70px;
-}
-
-
-.main-nav li a {
-  color: #fff;
-  font-size: 1.5rem;
-}
-
-.proposal {
-  margin-left: 30px;
-  background-color: #2D8C3D;
-  padding: 16px 95px;
-  border-radius: 70px;
-  color: #fff;
-  font-size: 1.5rem;
-  border: none;   
-  margin-top: 50px;
-  margin-bottom: 50px;
-
 }
 
 h3 {
   font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+#registerBtn {
+  display: inline-block;
+}
+
+.submit-field {
+  list-style: none;
+  text-align: center;
+}
+
+.card,
+.top-nav {
+  font-size: clamp(18px, 2.8vw, 24px);
+  color: #000;
+  display: block;
+  text-align: center;
+  background: #fff;
+  text-decoration: none;
+  padding: 16px 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .5);
+  transition: transform .25s ease, box-shadow .25s ease;
 }
 
 .form {
   padding: 10px 5px;
 }
 
-/*menu.html--------------------------------------------- */
-
 :root {
-  --sz: 8vmin;
+  --sz: 7vmin;
   --sp: 0.35s;
   --ac: orange;
   --ic: #ebebeb;
@@ -196,25 +146,25 @@ h3 {
 label {
   align-items: center;
   justify-content: center;
-
   position: relative;
   width: calc(var(--sz) * 1.5);
-  width: 200px;
+  width: 150px;
   text-transform: Capitalize;
   height: calc(var(--sz) * 0.75);
-  background: linear-gradient(0deg, #12172080, #0d121780);
+  background: linear-gradient(0deg, #DDDDDD, #BBBBBB80);
   border-radius: var(--sz);
   display: flex;
   align-items: center;
   padding: calc(var(--sz) * 0.25) calc(var(--sz) * 0.25) calc(var(--sz) * 0.25) calc(var(--sz) * 0.375);
   font-size: calc(var(--sz) * 0.25);
-  color: var(--ic);
+  color: #ffff;
   font-family: Arial, Helvetica, sans-serif;
   margin: calc(var(--sz) * 0.125);
   cursor: pointer;
-  box-shadow: 0 0 0 calc(var(--sz) * 0.015) var(--ic) inset;
+  box-shadow: 0 0 0 calc(var(--sz) * 0.015) #666666 inset;
   overflow: hidden;
   transition: all 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  font-weight: bold;
 }
 
 label::after {
@@ -232,6 +182,8 @@ label:has(input:checked) {
   box-shadow: 0 0 0 2px var(--ac) inset;
   color: var(--ac);
   transform: scale(1.1);
+  font-size: calc(var(--sz) * 0.22);
+  font-weight: normal;
 }
 
 label:has(input:checked)::after {
@@ -243,47 +195,22 @@ label:has(input:checked)::after {
   width: calc(var(--sz) * 0.25);
   height: calc(var(--sz) * 0.25);
   overflow: hidden;
-  font-size: 22px;
-
+  font-size: 18px;
+  font-weight: normal;
 }
 
 .meal-category,
 .meal-protein,
 .meal-method {
-  padding-bottom: 30px;
+  padding-bottom: 10px;
 }
-
-.confirm {
-  padding: 30px 0;
-}
-
-/*footer--------------------------------------------- */
-#footer {
-  background-color: #2D8C3D;
-  margin-top: auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.footer {
-  height: 70px;
-  display: flex;
-  color: #fff;
-  align-items: flex-end;
-}
-
-.footer-logo img {
-  width: 150px;
-}
-
-.footer p {
-  font-size: 0.8rem;
-  margin-left: 280px;
-}
-
-/*追記--------------------------------------------- */
 
 input {
   display: none;
+}
+
+button {
+  margin: 30px;
 }
 
 .button-wrapper {
@@ -292,6 +219,7 @@ input {
   align-items: center;
   gap: 1rem;
 }
+
 .button-label {
   color: #64748b;
   font-size: 0.9rem;
@@ -299,19 +227,22 @@ input {
   letter-spacing: 1px;
   text-transform: uppercase;
 }
+
 .shine-button {
   position: relative;
   padding: 1.2rem 2.5rem;
   font-size: 1.1rem;
   font-weight: 600;
   border: none;
-  border-radius: 12px;
+  border-radius: 20px;
   cursor: pointer;
   overflow: hidden;
   transition: all 0.3s ease;
   letter-spacing: 0.5px;
-  min-width: 200px;
+  width: 80%;
+  text-align: center;
 }
+
 
 .shine-button::before {
   content: '';
@@ -329,29 +260,57 @@ input {
   0% {
     left: -80px;
   }
+
   40% {
     left: calc(100% + 20px);
   }
+
   100% {
     left: calc(100% + 20px);
   }
 }
 
 .button-electric {
-  background: linear-gradient(135deg, #32ff32 0%, #65ff65 50%, #98ff98 100%);
-  color: #87898D;
-  box-shadow: 
-    0 10px 30px rgba(50, 255, 50, 0.4),
+  background: linear-gradient(135deg, #A8E6A3 0%, #BFE8B2 50%, #D5F1C5 100%);
+  color: #555555;
+  box-shadow:
+    0 10px 30px rgba(168, 230, 163, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  outline: 2px solid #FEBF00;
+  outline-offset: 5px;
+
 }
 
 .button-electric:hover {
   transform: translateY(-3px);
-  box-shadow: 
-    0 15px 40px rgba(50, 255, 50, 0.6),
+  box-shadow:
+    0 15px 40px rgba(168, 230, 163, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  background: linear-gradient(135deg, #99E0A0 100%, #C0E9B0 50%, #D8F1C8 100%);
 }
 
-/*スマホ幅対応------------------------------------------ */
-/*全体--------------------------------------- */
-@media (max-width: 768px) {}
+.button-electric:active {
+  background: linear-gradient(135deg, #99DFA0 100%, #BFE8B2 50%, #D5F1C5 100%);
+  transform: translateY(0);
+  box-shadow:
+    0 5px 15px rgba(168, 230, 163, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.confirm {
+  font-size: 50px
+}
+
+#resetButton {
+  width: 40%;
+}
+
+.p-small {
+  font-size: 0.8rem;
+}
+
+.start-footer {
+  margin-top: 30px;
+}
+

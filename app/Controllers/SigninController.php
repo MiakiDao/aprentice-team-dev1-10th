@@ -1,9 +1,7 @@
 <?php
-
 require_once __DIR__ . '/../Models/user.php';
 
 class signinController
-
 {
     public function authenticate()
     {
@@ -16,12 +14,6 @@ class signinController
 
         //入力されたユーザー情報を照合（あったら$user=該当ユーザーの情報を持ってくる）
         $user = User::verify($email, $password);
-
-        $name     = trim($_POST['name'] ?? '');
-
-        //入力されたユーザー情報を照合（あったら$user=該当ユーザーの情報を持ってくる）
-        $user = User::verify($email, $password, $name);
-
 
         // 認証成功ー＞homeへリダイレクト
         if($user)
@@ -39,3 +31,4 @@ class signinController
         }
     }
 }
+

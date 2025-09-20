@@ -68,11 +68,11 @@ class HomeController {
         // ユーザー名
         $values['user_name'] = $user['user_name'];
 
-        // ポイント
-        $point = $this->pointModel->getPointByUserId($userId);
-        if ($point) {
-            $values['point'] = $point['point'];
-        }
+        // // ポイント
+        // $point = $this->pointModel->getPointByUserId($userId);
+        // if ($point) {
+        //     $values['point'] = $point['point'];
+        // }
 
         // 計測データ
         $measurement = $this->measurementModel->getMeasurementByUserId($userId);
