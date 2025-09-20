@@ -227,6 +227,10 @@ main.wrapper {
   object-fit: cover;
 }
 
+.form-img:hover {
+  background-color: #999999;
+}
+
 input {
   height: 30px;
   width: 80%;
