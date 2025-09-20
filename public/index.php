@@ -93,7 +93,7 @@ case 'signup_store':
         (new HomeSettingController())->update();
         break;
     case 'eat':
-        $file = $viewsPath . 'input/eat_1.html';
+        $file = $viewsPath . 'input/eat_1.php';
         break;
     case 'menu':
         $file = $viewsPath . 'input/menu.php';
