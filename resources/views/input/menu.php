@@ -1,4 +1,3 @@
-<!-- ホームに戻るボタンの追加をお願いします！ -->
 
 <?php
 require_once '/var/www/app/Controllers/menuController.php';
@@ -11,6 +10,7 @@ $error  = $response['error'];
 $selectedGenre = $_POST['genre'] ?? '';
 $selectedFood = $_POST['food'] ?? '';
 $selectedMethod = $_POST['method'] ?? '';
+
 ?>
 
 <!DOCTYPE html>
