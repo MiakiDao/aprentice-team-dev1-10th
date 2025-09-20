@@ -78,6 +78,7 @@ case 'signup_store':
         break;
     case 'start':
         $file = $viewsPath . 'start.html';
+        break;
     case 'home':
         $file = $viewsPath . 'set-login/home.php';
         break;
