@@ -1,5 +1,4 @@
 <!-- ファイル名HTML → phpに変更お願いします！ -->
-<!-- ホームに戻るボタンの追加をお願いします！ -->
 
 
 <!DOCTYPE html>
@@ -20,6 +19,16 @@
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Courier New", "Noto Sans Mono", monospace;
       line-height: 1.7;
       color: black;
+    }
+    a {
+      list-style: none;
+      text-decoration: none;
+      color: black;
+    }
+
+    h1:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 rgba(0, 0, 0, .2);
     }
 
     .start {
@@ -201,8 +210,8 @@
       mask: var(--mask);
     }
 
-      @media (max-width: 1023px) {
-        .outputmeal {
+    @media (max-width: 1023px) {
+      .outputmeal {
         --mask:
           radial-gradient(30.24px at 50% 42.3px, #000 99%, #0000 101%) calc(50% - 36px) 0/72px 51% repeat-x,
           radial-gradient(30.24px at 50% -24.3px, #0000 99%, #000 101%) 50% 18px/72px calc(51% - 18px) repeat-x,
@@ -210,10 +219,10 @@
           radial-gradient(30.24px at 50% calc(100% + 24.3px), #0000 99%, #000 101%) 50% calc(100% - 18px)/72px calc(51% - 18px) repeat-x;
       }
     }
-    
 
-      @media (max-width: 480px) {
-        .outputmeal {
+
+    @media (max-width: 480px) {
+      .outputmeal {
         --mask:
           radial-gradient(16.01px at 50% 22.5px, #000 99%, #0000 101%) calc(50% - 20px) 0/40px 51% repeat-x,
           radial-gradient(16.01px at 50% -12.5px, #0000 99%, #000 101%) 50% 10px/40px calc(51% - 10px) repeat-x,
@@ -332,7 +341,6 @@
       transform: translateY(40px);
       transition-duration: .3s;
     }
-
   </style>
 
   <!-- HTML-------------------------------- ------------------------------->
@@ -340,7 +348,10 @@
 
 <body>
   <div class="start">
-    <h1 class="title">献立提案アプリ/食事記録</h1>
+    <a href="/">
+      <h1 class="title">献立提案アプリ/食事記録 🏠</h1>
+    </a>
+    
     <div class="inner">
       <main>
         <div class="main wrapper">

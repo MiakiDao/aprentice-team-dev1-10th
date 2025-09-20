@@ -13,7 +13,7 @@ session_start();
 </head>
 <body>
   <div class="start">
-    <h1 class="title">献立提案アプリ/ログインUIのみ</h1>
+    <h1 class="title">献立提案アプリ/ログイン</h1>
 
     <div class="inner">
       
@@ -24,7 +24,7 @@ session_start();
        <?php endif; ?>
 
       <!-- aタグではなく、フォームでPOSTする -->
-      <form method="post" action="/?page=signin_verify" id="login-form" novalidate>
+      <form method="post" action="/index.php?page=login" id="login-form" novalidate>
         <ul class="menu">
           <li class="login-field">
             <label class="login-label" for="email">メールアドレス</label>

@@ -71,7 +71,7 @@ $values = $data['values'];
               </li>
               */ ?>
               <li><a href="index.php?page=home-setting">ユーザー名⚙️</a></li>
-              <li class="logout"><a href="index.php?page=login">ログアウト</a></li>
+              <li class="logout"><a href="index.php?page=signout">ログアウト</a></li>
             </ul>
           </nav>
         </div>
