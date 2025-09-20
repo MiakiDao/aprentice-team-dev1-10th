@@ -1,11 +1,11 @@
 <?php
-require_once __DIR__ . '/../app/Controllers/signupController.php';
-require_once __DIR__ . '/../app/Controllers/signinController.php';
+// require_once __DIR__ . '/../app/Controllers/signupController.php';
+// require_once __DIR__ . '/../app/Controllers/signinController.php';
 
-require_once __DIR__ . '/../app/Controllers/settingController.php';
-require_once __DIR__ . '/../app/Controllers/signoutController.php';
+// require_once __DIR__ . '/../app/Controllers/settingController.php';
+// require_once __DIR__ . '/../app/Controllers/signoutController.php';
 
-require_once __DIR__ . '/../app/Controllers/homesettingController.php';
+// require_once __DIR__ . '/../app/Controllers/homesettingController.php';
 
 
 // ?page=xxx でどのページを表示　① どのページかを読み取る（リクエスト解析）
