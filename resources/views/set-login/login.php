@@ -24,7 +24,7 @@ session_start();
        <?php endif; ?>
 
       <!-- aタグではなく、フォームでPOSTする -->
-      <form method="post" action="/index.php?page=login" id="login-form" novalidate>
+      <form method="post" action="/index.php?page=signin_verify" id="login-form" novalidate>
         <ul class="menu">
           <li class="login-field">
             <label class="login-label" for="email">メールアドレス</label>
