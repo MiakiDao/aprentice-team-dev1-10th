@@ -30,7 +30,7 @@ class MeasurementModel {
             $weight,
             $height,
             $bodyFat,
-            $muscleMass,
+            $muscleMass
         ]);
 
         if (!$ok) return 0;

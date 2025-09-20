@@ -34,6 +34,16 @@ class User
         ];
     }
 
+    //　setting内での理想体型のユーザー入力をユーザーテーブルに更新
+    public static function updateBodyType(int $userId, int $bodyTypeId): bool
+    {
+        $pdo = DB::conn();
+
+        $sql = 'UPDATE users SET body_type_id = ? WHERE id = ?';
+        $stmt = $pdo->prepare($sql);
+        return $stmt->execute([$bodyTypeId, $userId]);
+    }
+
     public static function verify(string $email, string $password)
     {
         $pdo = DB::conn();

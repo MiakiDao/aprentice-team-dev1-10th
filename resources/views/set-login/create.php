@@ -54,7 +54,7 @@
             <input id="username"
             class="login-input card-input"
             type="text"
-            name="username"
+            name="name"
             placeholder="Hanako1234"
             required
             minlength="3"

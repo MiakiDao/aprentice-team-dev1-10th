@@ -33,24 +33,31 @@
 
     <!-- main ---------------------------------------------->
     <div class="main wrapper">
+      <!-- エラーメッセージ表示 -->
+      <?php if (!empty($_SESSION['error'])): ?>
+        <p class="login-alert" style="color:red;">
+          <?= htmlspecialchars($_SESSION['error'], ENT_QUOTES, 'UTF-8'); ?>
+        </p>
+        <?php unset($_SESSION['error']); ?>
+      <?php endif; ?>
       <div>
         <div class="question">なりたい体格はどれですか？</div>
         <form action="/index.php?page=setting_store" method="POST">
           <div class="settingman">
             <div class="form-img">
-              <input type="radio" name="body_type_id" value="1" required>
+              <input type="radio" id="bt-1" name="body_type_id" value="1" required>
               <img src="/image/man1.png" alt="マッチョ">
-              <label for="">マッチョ</label>
+              <label for="bt-1">マッチョ</label>
             </div>
             <div class="form-img">
-              <input type="radio" name="body_type_id" value="1" required>
+              <input type="radio" id="bt-2" name="body_type_id" value="2" required>
               <img src="/image/man2.png" alt="マッチョ">
-              <label for="">少しマッチョ</label>
+              <label for="bt-2">少しマッチョ</label>
             </div>
             <div class="form-img">
-              <input type="radio" name="body_type_id" value="1" required>
+              <input type="radio" id="bt-3" name="body_type_id" value="3" required>
               <img src="/image/man3.png" alt="マッチョ">
-              <label for="">これからマッチョ</label>
+              <label for="bt-3">これからマッチョ</label>
             </div>
           </div>
 
