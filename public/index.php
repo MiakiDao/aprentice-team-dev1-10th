@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../app/Controllers/signupController.php';
 require_once __DIR__ . '/../app/Controllers/signinController.php';
+require_once __DIR__ . '/../app/Controllers/signoutController.php';
 
 
 // ?page=xxx でどのページを表示　① どのページかを読み取る（リクエスト解析）
@@ -59,6 +60,10 @@ switch ($page) {
         break;
     case 'menu':
         $file = $viewsPath . 'input/menu_1.html';
+        break;
+    case 'signout':
+        $controller = new SignoutController;
+        $controller->logout();
         break;
     default:
         $file = $viewsPath . 'start.html';
