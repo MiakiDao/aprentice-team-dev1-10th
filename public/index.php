@@ -150,7 +150,7 @@ switch ($page) {
     
     // ユーザー情報再設定ページGET
     case 'home-setting':
-        $file = $viewsPath . 'home/setting_1.php';
+        $file = $viewsPath . 'home/setting.php';
         (new HomeSettingController())->show();
         exit;
 
@@ -159,7 +159,7 @@ switch ($page) {
         (new HomeSettingController())->update();
         break;
     case 'eat':
-        $file = $viewsPath . 'input/eat_1.php';
+        $file = $viewsPath . 'input/eat.php';
         break;
     case 'menu':
         $file = $viewsPath . 'input/menu.php';
