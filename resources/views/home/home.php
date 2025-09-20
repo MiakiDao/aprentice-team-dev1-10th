@@ -61,7 +61,7 @@ $values = $data['values'];
 
           <nav class="top-nav">
             <ul>
-              <?php /*
+
               <li style="all: unset;">
                 <?php if (!empty($_SESSION['user'])): ?>
                   <span class="login-success" style="color:green;">
@@ -69,7 +69,7 @@ $values = $data['values'];
                   </span>
                 <?php endif; ?>
               </li>
-              */ ?>
+    
               <li><a href="index.php?page=home-setting">ユーザー名⚙️</a></li>
               <li class="logout"><a href="index.php?page=signout">ログアウト</a></li>
             </ul>
