@@ -61,7 +61,7 @@
       <div class="actions span-all">
         <a href="/index.php?page=eat"  class="btn-login">今日の食事を入力する</a>
         <a href="/index.php?page=menu" class="btn-login">献立提案してもらう</a>
-      </div>
+     </div>
     </div>
 
     <footer class="site-footer">© 2025 TeamProject1</footer>
