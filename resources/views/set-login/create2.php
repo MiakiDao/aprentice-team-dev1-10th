@@ -16,8 +16,7 @@
 
     <div class="inner">
       <!-- aタグではなく、フォームでPOSTする -->
-      <form method="post" action="/index.php?page=create2" id="signup-form" novalidate>
-
+			<form method="post" action="/index.php?page=create2_store" id="register-form">
         <ul class="photo-list">
           <li><img src="/image/man1.png" alt="写真1" tabindex="0"></li>
           <li><img src="/image/man2.png" alt="写真2" tabindex="0"></li>
