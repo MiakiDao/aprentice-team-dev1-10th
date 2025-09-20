@@ -67,12 +67,6 @@ class HomeController {
             // ユーザー情報
             $values['user_name'] = $user['user_name'];
 
-<<<<<<< HEAD
-            // ポイント
-            $point = $this->pointModel->getPointByUserId($userId);
-            if ($point) {
-                $values['point'] = $point['point'];
-=======
         // ユーザー名
         $values['user_name'] = $user['user_name'];
 
@@ -108,7 +102,6 @@ class HomeController {
                 ];
 
                 $values['image_path'] = $images[$bodyType['id']] ?? '';
->>>>>>> main
             }
 
             // 身体情報
@@ -143,4 +136,5 @@ class HomeController {
 
         return ['values' => $values, 'error' => $error];
     }
+}
 }
