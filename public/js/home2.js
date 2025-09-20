@@ -61,9 +61,9 @@
       }
     }
 
-    // --- 2) キャラ画像の差し替え（選択したキャラがあれば反映） ---
+
     const heroImg = document.querySelector(".hero-card img");
-    const chosen = localStorage.getItem("selectedCharacter");  // 例: "/image/man2.png"
+    const chosen = localStorage.getItem("selectedCharacter");
     if (heroImg && chosen) {
       heroImg.src = chosen;
       heroImg.alt = "選択したキャラクター";
@@ -111,11 +111,12 @@
         progressEl.style.backgroundColor = "#F5E24D";
       }
     }, 20);
+  }
+
     }
     document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('go-setting')?.addEventListener('click', () => {
       window.location.assign('/index.php?page=setting');
     });
   });
-
 })();
