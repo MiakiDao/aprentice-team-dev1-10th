@@ -4,6 +4,15 @@ require_once __DIR__ . '/../../config/db.php'; // config/db.phpを呼び出し�
 
 class User
 {
+
+    public static function emailExists(string $email): bool
+    {
+        $pdo = DB::conn();
+        $stmt = $pdo->prepare('SELECT COUNT(*) FROM users WHERE email = ?');
+        $stmt->execute([$email]);
+        return $stmt->fetchColumn() > 0;
+    }
+    
     public static function create(string $name, string $email, string $password)
     {
         $pdo = DB::conn();
@@ -14,7 +23,15 @@ class User
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$name, $email, $hash]);
 
-        return (int)$pdo->lastInsertId();
+            // 挿入したレコードのIDを取得
+        $id = (int)$pdo->lastInsertId();
+
+            // すぐにユーザー情報を返す
+        return [
+            'id'        => $id,
+            'user_name' => $name,
+            'email'     => $email,
+        ];
     }
 
     public static function verify(string $email, string $password)
