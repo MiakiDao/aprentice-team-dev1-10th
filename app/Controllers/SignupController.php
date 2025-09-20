@@ -1,26 +1,43 @@
 <?php
 require_once __DIR__ . '/../Models/user.php';
 
-class signupController 
-
+class signupController
 {
-    public function store(): void  //判定処理つけるか決める
+    public function store(): void
     {
-        // ユーザー入力の空白を取り除く
+        session_start(); // セッション必須
+
+        // フォーム値を先に取得＆トリム
         $email    = trim($_POST['email'] ?? '');
         $password = trim($_POST['password'] ?? '');
         $name     = trim($_POST['name'] ?? '');
-        
+
+        // バリデーション
+        if ($email === '' || $password === '' || $name === '') {
+            $_SESSION['error'] = 'すべての項目を入力してください。';
+            header('Location: index.php?page=create');
+            exit;
+        }
+
+        // メール重複チェック（ここで初めて使う）
+        if (User::emailExists($email)) {
+            $_SESSION['error'] = 'このメールアドレスは既に登録されています。';
+            header('Location: index.php?page=create');
+            exit;
+        }
+
         // 作成（モデルを呼ぶ）
         $user = User::create($name, $email, $password);
-        
+
         if ($user) {
-            // 登録成功したら setting ページへ
+            // 成功：ユーザー情報をセッションへ入れて次画面へ
+            $_SESSION['user'] = $user; // ['id','user_name','email'] を想定
             header('Location: index.php?page=setting');
             exit;
         } else {
-            // エラーなら signup に戻す
-            header('Location: index.php?page=signup');
+            // 失敗：戻す
+            $_SESSION['error'] = '登録に失敗しました。';
+            header('Location: index.php?page=create');
             exit;
         }
     }

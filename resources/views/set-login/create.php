@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -15,7 +16,14 @@
     <h1 class="title">献立提案アプリ/新規作成UIのみ</h1>
 
     <div class="inner">
-      <p id="err" class="login-alert" hidden>メールアドレスまたはパスワードが違います</p>
+
+    <div class="inner">
+      <?php if (!empty($_SESSION['error'])): ?>
+        <p class="login-alert" style="color:red;">
+          <?= htmlspecialchars($_SESSION['error'], ENT_QUOTES, 'UTF-8'); ?>
+        </p>
+        <?php unset($_SESSION['error']); ?>
+      <?php endif; ?>
 
       <!-- aタグではなく、フォームでPOSTする -->
       <form method="post" action="/index.php?page=signup_store" id="signup-form" novalidate>

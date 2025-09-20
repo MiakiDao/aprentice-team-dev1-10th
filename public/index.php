@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../app/Controllers/signupController.php';
 require_once __DIR__ . '/../app/Controllers/signinController.php';
+require_once __DIR__ . '/../app/Controllers/settingController.php';
 
 
 // ?page=xxx でどのページを表示　① どのページかを読み取る（リクエスト解析）
@@ -29,6 +30,15 @@ switch ($page) {
     case 'setting':
     $file = $viewsPath . 'set-login/setting.php';
     break;
+    case 'setting_store':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            (new settingController())->store();
+            exit;
+        } //elseで例外処理
+        else {
+            header('Location: /index.php?page=setting');
+            exit;
+        }
 
     case 'login':
         $file = $viewsPath . 'set-login/login.php';
