@@ -1,3 +1,4 @@
+// public/js/home2.js
 (() => {
   const ids = { weight: "weight", height: "height", bodyFat: "bodyfat", muscle: "muscle" };
   const set = (key, val, unit = "") => {
@@ -15,6 +16,7 @@
   };
 
   document.addEventListener("DOMContentLoaded", async () => {
+    // --- 1) 体重・身長などの表示（data-* 優先 → API フォールバック） ---
     const statsEl = document.querySelector(".stats");
     if (statsEl && Object.keys(statsEl.dataset).length) {
       const m = {
@@ -59,6 +61,7 @@
       }
     }
 
+
     const heroImg = document.querySelector(".hero-card img");
     const chosen = localStorage.getItem("selectedCharacter");
     if (heroImg && chosen) {
@@ -66,6 +69,7 @@
       heroImg.alt = "選択したキャラクター";
     }
 
+    // --- 3) コツコツバー（localStorage 'meals' の件数で進捗） ---
     const countArea = document.getElementById("countArea");
     const progress = document.querySelector(".progress");
     if (countArea && progress) {
@@ -78,6 +82,7 @@
       }
       countArea.textContent = `記録数: ${mealCount}件`;
 
+      // 0〜100%に丸める（件数＝％の単純マッピング）
       const target = Math.max(0, Math.min(mealCount, 100));
       animateProgressBar(progress, target);
     }
@@ -107,4 +112,11 @@
       }
     }, 20);
   }
+
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('go-setting')?.addEventListener('click', () => {
+      window.location.assign('/index.php?page=setting');
+    });
+  });
 })();
