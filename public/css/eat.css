@@ -71,7 +71,6 @@
       padding-top: 20px;
       flex: 1;
     }
-
     h3 {
       font-size: 1.2rem;
       margin-bottom: 30px;
@@ -327,4 +326,49 @@
       opacity: 1;
       transform: translateY(40px);
       transition-duration: .3s;
+    }
+
+    @media (max-width: 900px) {
+      .wrapper {
+        width: 90%;
+        padding: 0 2%;
+      }
+
+      h1 {
+        font-size: clamp(20px, 5vw, 32px);
+        white-space: nowrap;
+      }
+
+      textarea.meal-input {
+        width: 90%;
+        height: 80px;
+        font-size: 1.2rem;
+      }
+
+      .meallog-table {
+        width: 95%;
+        font-size: 12px;
+      }
+
+      .meallog-table thead th,
+      .meallog-table td {
+        padding: 8px;
+        font-size: 12px;
+      }
+
+      .outputmeal {
+        width: 90%;
+        font-size: 14px;
+        padding: 15px 10px;
+      }
+
+      h1,
+      h3 {
+        font-size: 1rem;
+      }
+
+      .progress-bar {
+        height: 30px;
+        width: 90%;
+      }
     }
