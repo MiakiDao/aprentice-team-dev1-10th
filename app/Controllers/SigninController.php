@@ -6,7 +6,7 @@ class signinController
     public function authenticate()
     {
         // セッションを開始（ここを忘れると$_SESSIONが使えない）
-        session_start();
+        // session_start();
 
         //フォームから送られてきた値を受け取る（空なら '' が入る）
         $email    = trim($_POST['email'] ?? '');

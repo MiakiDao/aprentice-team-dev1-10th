@@ -1,12 +1,10 @@
 <?php
-// require_once '/var/www/app/Controllers/homeController.php';
-// $controller = new HomeController();
-// $data = $controller->handle($_POST);
-// $values = $data['values'];
+require_once '/var/www/app/Controllers/homeController.php';
+$controller = new HomeController();
+$data = $controller->handle($_POST);
+$values = $data['values'];
 ?>
 
-<!DOCTYPE html>
-<html lang="ja">
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -39,32 +37,32 @@
 
         <section class="board">
           <ul class="nutri"
-            data-protein="<?= htmlspecialchars((string)($macros['protein'] ?? ''), ENT_QUOTES, 'UTF-8') ?>"
-            data-carbs="<?= htmlspecialchars((string)($macros['carbs']   ?? ''), ENT_QUOTES, 'UTF-8') ?>"
-            data-fat="<?= htmlspecialchars((string)($macros['fat']       ?? ''), ENT_QUOTES, 'UTF-8') ?>">
-            <li>タンパク質：<?= htmlspecialchars((string)($macros['protein'] ?? '-'), ENT_QUOTES, 'UTF-8') ?>g</li>
-            <li>糖質：<?= htmlspecialchars((string)($macros['carbs']   ?? '-'), ENT_QUOTES, 'UTF-8') ?>g</li>
-            <li>脂質：<?= htmlspecialchars((string)($macros['fat']     ?? '-'), ENT_QUOTES, 'UTF-8') ?>g</li>
+            data-protein="<?= htmlspecialchars((string)($values['protein'] ?? ''), ENT_QUOTES, 'UTF-8') ?>"
+            data-carbs="<?= htmlspecialchars((string)($values['carbohydrates']   ?? ''), ENT_QUOTES, 'UTF-8') ?>"
+            data-fat="<?= htmlspecialchars((string)($values['fat']       ?? ''), ENT_QUOTES, 'UTF-8') ?>">
+            <li>タンパク質：<?= htmlspecialchars((string)($values['protein'] ?? '-'), ENT_QUOTES, 'UTF-8') ?>g</li>
+            <li>糖質：<?= htmlspecialchars((string)($values['carbohydrates']   ?? '-'), ENT_QUOTES, 'UTF-8') ?>g</li>
+            <li>脂質：<?= htmlspecialchars((string)($values['fat']     ?? '-'), ENT_QUOTES, 'UTF-8') ?>g</li>
           </ul>
         </section>
 
         <aside class="stats"
-          data-weight="<?= htmlspecialchars((string)($metrics['weight']      ?? ''), ENT_QUOTES, 'UTF-8') ?>"
-          data-height="<?= htmlspecialchars((string)($metrics['height']      ?? ''), ENT_QUOTES, 'UTF-8') ?>"
-          data-body-fat="<?= htmlspecialchars((string)($metrics['body_fat']  ?? ''), ENT_QUOTES, 'UTF-8') ?>"
-          data-muscle="<?= htmlspecialchars((string)($metrics['muscle_mass'] ?? ''), ENT_QUOTES, 'UTF-8') ?>">
+          data-weight="<?= htmlspecialchars((string)($values['weight']      ?? ''), ENT_QUOTES, 'UTF-8') ?>"
+          data-height="<?= htmlspecialchars((string)($values['height']      ?? ''), ENT_QUOTES, 'UTF-8') ?>"
+          data-body-fat="<?= htmlspecialchars((string)($values['body_fat']  ?? ''), ENT_QUOTES, 'UTF-8') ?>"
+          data-muscle="<?= htmlspecialchars((string)($values['muscle_mass'] ?? ''), ENT_QUOTES, 'UTF-8') ?>">
           <ul class="metrics">
             <li>体重：<span id="weight">
-                <?= htmlspecialchars((string)($metrics['weight']      ?? '-'), ENT_QUOTES, 'UTF-8') ?><?= isset($metrics['weight']) ? ' kg' : '' ?>
+                <?= htmlspecialchars((string)($values['weight']      ?? '-'), ENT_QUOTES, 'UTF-8') ?><?= isset($values['weight']) ? ' kg' : '' ?>
               </span></li>
             <li>身長：<span id="height">
-                <?= htmlspecialchars((string)($metrics['height']      ?? '-'), ENT_QUOTES, 'UTF-8') ?><?= isset($metrics['height']) ? ' cm' : '' ?>
+                <?= htmlspecialchars((string)($values['height']      ?? '-'), ENT_QUOTES, 'UTF-8') ?><?= isset($values['height']) ? ' cm' : '' ?>
               </span></li>
             <li>体脂肪：<span id="bodyfat">
-                <?= htmlspecialchars((string)($metrics['body_fat']    ?? '-'), ENT_QUOTES, 'UTF-8') ?><?= isset($metrics['body_fat']) ? ' %' : '' ?>
+                <?= htmlspecialchars((string)($values['body_fat']    ?? '-'), ENT_QUOTES, 'UTF-8') ?><?= isset($values['body_fat']) ? ' %' : '' ?>
               </span></li>
             <li>筋肉量：<span id="muscle">
-                <?= htmlspecialchars((string)($metrics['muscle_mass'] ?? '-'), ENT_QUOTES, 'UTF-8') ?><?= isset($metrics['muscle_mass']) ? ' kg' : '' ?>
+                <?= htmlspecialchars((string)($values['muscle_mass'] ?? '-'), ENT_QUOTES, 'UTF-8') ?><?= isset($values['muscle_mass']) ? ' kg' : '' ?>
               </span></li>
           </ul>
         </aside>
