@@ -32,7 +32,10 @@ $values = $data['values'];
     <div class="container">
       <div class="home-grid">
         <aside class="hero-card">
-          <img src="/image/man2.png" alt="キャラクター">
+          <div class="form-img">
+              <img src="<?= htmlspecialchars($values['image_path']) ?>" alt="">
+              <span><?= htmlspecialchars($values['body_type_name']) ?></span>
+          </div>
         </aside>
 
         <section class="board">
