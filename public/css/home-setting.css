@@ -259,3 +259,23 @@ input:hover {
 .start-footer {
   margin-top: 30px;
 }
+
+@media (max-width: 900px) {
+  .wrapper {
+    width: 100%;
+    padding: 0 2%;
+    margin: 0 auto;
+  }
+
+  .main.wrapper {
+    flex-direction: column;
+    gap: 10px;
+    margin: 0 auto;
+    align-items: center;
+  }
+
+  .shine-button {
+    width: 95%;
+    min-width: 300px;
+  }
+}
