@@ -9,7 +9,6 @@ use App\Models\MeasurementModel;
 class HomeSettingController
 {
     public function show(): void {
-        session_start();
 
         if (empty($_SESSION['user']['id'])) {
             header('Location: /index.php?page=login');
@@ -31,7 +30,6 @@ class HomeSettingController
 
     public function update(): void
     {
-        session_start();
 
         $userId      = (int)$_SESSION['user']['id'];
         // users

@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -49,5 +46,6 @@ session_start();
   </div>
   <script src="/js/login.js"></script>
 </body>
+
 
 </html>

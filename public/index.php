@@ -1,13 +1,13 @@
 <?php
-// ===== Controller requires =====
-// require_once __DIR__ . '/../app/Controllers/settingController.php';
-// require_once __DIR__ . '/../app/Controllers/signinController.php';
-// require_once __DIR__ . '/../app/Controllers/signupController.php';
-// require_once __DIR__ . '/../app/Controllers/SignoutController.php';
-// require_once __DIR__ . '/../app/Controllers/HomeSettingController.php';
-// require_once __DIR__ . '/../app/Controllers/menuController.php';
-// require_once __DIR__ . '/../app/Controllers/homeController.php';
 session_start();
+// ===== Controller requires =====
+require_once __DIR__ . '/../app/Controllers/settingController.php';
+require_once __DIR__ . '/../app/Controllers/signinController.php';
+require_once __DIR__ . '/../app/Controllers/signupController.php';
+require_once __DIR__ . '/../app/Controllers/SignoutController.php';
+require_once __DIR__ . '/../app/Controllers/HomeSettingController.php';
+require_once __DIR__ . '/../app/Controllers/menuController.php';
+require_once __DIR__ . '/../app/Controllers/homeController.php';
 
 // ① page取得（デフォルトは start）
 $page = $_GET['page'] ?? 'start';
@@ -111,4 +111,5 @@ if (!empty($file) && is_file($file)) {
 } else {
   http_response_code(404);
   echo "<p>❌ ページが見つかりません: " . htmlspecialchars($file ?? '(unset)') . "</p>";
+
 }
