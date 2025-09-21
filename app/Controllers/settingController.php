@@ -8,7 +8,6 @@ class settingController
 {
     public function store(): void
     {
-        // session_start();
 
         // ログインをしているかどうかを判定
         if (empty($_SESSION['user']['id'])) {
