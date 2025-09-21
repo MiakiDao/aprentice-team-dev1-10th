@@ -5,8 +5,6 @@ class signupController
 {
     public function store(): void
     {
-        session_start(); // セッション必須
-
         // フォーム値を先に取得＆トリム
         $email    = trim($_POST['email'] ?? '');
         $password = trim($_POST['password'] ?? '');

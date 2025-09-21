@@ -1,3 +1,5 @@
+///set-login/homeに読み込ませてます！！消さないで！9/21
+
 // home.js
 document.addEventListener("DOMContentLoaded", () => {
   const countArea = document.getElementById("countArea");
