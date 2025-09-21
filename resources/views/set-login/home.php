@@ -24,7 +24,7 @@ $values = $data['values'];
       <div class="brand">献立提案アプリ/ホーム画面</div>
       <div class="spacer"></div>
       <a href="/index.php?page=home-setting" class="top-link top-link--accent">ユーザー登録</a>
-      <a href="/index.php?page=login" class="top-link">ログアウト</a>
+      <a href="/index.php?page=signout" class="top-link">ログアウト</a>
     </div>
   </header>
 
