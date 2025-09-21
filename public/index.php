@@ -1,4 +1,5 @@
 <?php
+session_start();
 // ===== Controller requires =====
 require_once __DIR__ . '/../app/Controllers/settingController.php';
 require_once __DIR__ . '/../app/Controllers/signinController.php';
