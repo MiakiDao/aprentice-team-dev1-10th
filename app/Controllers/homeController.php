@@ -1,5 +1,5 @@
 <?php
-session_start(); // セッション開始（ファイルの先頭で必須）
+// session_start(); // セッション開始（ファイルの先頭で必須）
 // 仮ログイン用（テスト）
 // if (!isset($_SESSION['user'])) {
 //     $_SESSION['user'] = [
