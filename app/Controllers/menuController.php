@@ -1,6 +1,9 @@
 <?php
+namespace app\Controllers;
 require_once '/var/www/app/Models/menuModel.php';
 use App\Models\MenuModel;
+
+
 
 class MenuController {
     private MenuModel $menuModel;

@@ -1,10 +1,9 @@
 <?php
-$result = [];
-$error  = null;
-
-$selectedGenre  = $_POST['genre']  ?? '';
-$selectedFood   = $_POST['food']   ?? '';
-$selectedMethod = $_POST['method'] ?? '';
+use App\Controllers\MenuController;
+$controller = new MenuController();
+$response = $controller->handle($_POST ?? []);
+$result = $response['result'];
+$error  = $response['error'];
 ?>
 
 <!DOCTYPE html>
@@ -41,36 +40,25 @@ $selectedMethod = $_POST['method'] ?? '';
               <form method="post">
                 <h1 class="post-h1">ジャンル</h1>
                 <div class="label-a">
-                  <label><input type="radio" name="genre" value="1" <?php if ($selectedGenre == '1') echo 'checked';
-                                                                    ?>>和風</label>
-                  <label><input type="radio" name="genre" value="2" <?php if ($selectedGenre == '2') echo 'checked';
-                                                                    ?>>中華</label>
-                  <label><input type="radio" name="genre" value="3" <?php if ($selectedGenre == '3') echo 'checked';
-                                                                    ?>>洋風</label>
+                  <label><input type="radio" name="genre" value="1">和風</label>
+                  <label><input type="radio" name="genre" value="2">中華</label>
+                  <label><input type="radio" name="genre" value="3">洋風</label>
                 </div>
 
                 <h1 class="post-h1">主菜</h1>
                 <div class="label-a">
-                  <label><input type="radio" name="food" value="1" <?php if ($selectedFood == '1') echo 'checked';
-                                                                    ?>>肉</label>
-                  <label><input type="radio" name="food" value="2" <?php if ($selectedFood == '2') echo 'checked';
-                                                                    ?>>魚</label>
-                  <label><input type="radio" name="food" value="3" <?php if ($selectedFood == '3') echo 'checked';
-                                                                    ?>>卵</label>
-                  <label><input type="radio" name="food" value="4" <?php if ($selectedFood == '4') echo 'checked';
-                                                                    ?>>豆</label>
+                  <label><input type="radio" name="food" value="1">肉</label>
+                  <label><input type="radio" name="food" value="2">魚</label>
+                  <label><input type="radio" name="food" value="3">卵</label>
+                  <label><input type="radio" name="food" value="4">豆</label>
                 </div>
 
                 <h1 class="post-h1">調理法</h1>
                 <div class="label-a">
-                  <label><input type="radio" name="method" value="1" <?php if ($selectedMethod == '1') echo 'checked';
-                                                                      ?>>焼く</label>
-                  <label><input type="radio" name="method" value="2" <?php if ($selectedMethod == '2') echo 'checked';
-                                                                      ?>>煮る</label>
-                  <label><input type="radio" name="method" value="3" <?php if ($selectedMethod == '3') echo 'checked';
-                                                                      ?>>炒める</label>
-                  <label><input type="radio" name="method" value="4" <?php if ($selectedMethod == '4') echo 'checked';
-                                                                      ?>>蒸す</label>
+                  <label><input type="radio" name="method" value="1">焼く</label>
+                  <label><input type="radio" name="method" value="2">煮る</label>
+                  <label><input type="radio" name="method" value="3">炒める</label>
+                  <label><input type="radio" name="method" value="4">蒸す</label>
                 </div>
 
                 <div class="button">

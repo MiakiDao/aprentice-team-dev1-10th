@@ -68,54 +68,7 @@
       heroImg.src = chosen;
       heroImg.alt = "選択したキャラクター";
     }
-
-    // // --- 3) コツコツバー（localStorage 'meals' の件数で進捗） ---
-    // const countArea = document.getElementById("countArea");
-    // const progress = document.querySelector(".progress");
-    // if (countArea && progress) {
-    //   let mealCount = 0;
-    //   try {
-    //     const meals = JSON.parse(localStorage.getItem("meals") || "[]");
-    //     mealCount = Array.isArray(meals) ? meals.length : 0;
-    //   } catch (_) {
-    //     mealCount = 0;
-    //   }
-    //   countArea.textContent = `記録数: ${mealCount}件`;
-
-    //   // 0〜100%に丸める（件数＝％の単純マッピング）
-    //   const target = Math.max(0, Math.min(mealCount, 100));
-    //   animateProgressBar(progress, target);
-    // }
   });
-
-  // function animateProgressBar(progressEl, target) {
-  //   progressEl.style.width = "0%";
-  //   let current = 0;
-  //   const interval = setInterval(() => {
-  //     current += 1;
-  //     if (current >= target) {
-  //       current = target;
-  //       clearInterval(interval);
-  //     }
-  //     progressEl.style.width = current + "%";
-
-  //     if (current > 80) {
-  //       progressEl.style.backgroundColor = "#EB489A";
-  //     } else if (current > 60) {
-  //       progressEl.style.backgroundColor = "#58A65C";
-  //     } else if (current > 40) {
-  //       progressEl.style.backgroundColor = "#5383EC";
-  //     } else if (current > 20) {
-  //       progressEl.style.backgroundColor = "#AA3A75";
-  //     } else {
-  //       progressEl.style.backgroundColor = "#F5E24D";
-  //     }
-  //   }, 20);
-  // }
-
-    }
-
-  
     document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('go-setting')?.addEventListener('click', () => {
       window.location.assign('/index.php?page=setting');

@@ -24,7 +24,7 @@ $values = $data['values'];
       <div class="brand">献立提案アプリ/ホーム画面</div>
       <div class="spacer"></div>
       <a href="/index.php?page=home-setting" class="top-link top-link--accent">ユーザー登録</a>
-      <a href="/index.php?page=login" class="top-link">ログアウト</a>
+      <a href="/index.php?page=signout" class="top-link">ログアウト</a>
     </div>
   </header>
 
@@ -32,7 +32,10 @@ $values = $data['values'];
     <div class="container">
       <div class="home-grid">
         <aside class="hero-card">
-          <img src="/image/man2.png" alt="キャラクター">
+          <div class="form-img">
+              <img src="<?= htmlspecialchars($values['image_path']) ?>" alt="">
+              <span><?= htmlspecialchars($values['body_type_name']) ?></span>
+          </div>
         </aside>
 
         <section class="board">

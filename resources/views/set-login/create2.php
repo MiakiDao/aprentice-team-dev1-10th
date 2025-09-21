@@ -20,14 +20,6 @@
       </div>
       <?php unset($_SESSION['error']); // 一度表示したら消す ?>
     <?php endif; ?>
-
-    <?php if (!empty($_SESSION['success'])): ?>
-      <div class="success-ms">
-        <?= htmlspecialchars($_SESSION['success'], ENT_QUOTES, 'UTF-8'); ?>
-      </div>
-      <?php unset($_SESSION['success']); ?>
-    <?php endif; ?>
-    
     <div class="inner">
       <!-- aタグではなく、フォームでPOSTする -->
 			<form method="post" action="/index.php?page=create2_store" id="register-form">
