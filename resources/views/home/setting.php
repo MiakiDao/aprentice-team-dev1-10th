@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -24,7 +23,21 @@
             <div class="shine-button button-electric">
               <h3>ユーザ情報を変更する</h3>
 
+              <?php if (!empty($_SESSION['error'])): ?>
+                <div class="flash flash-error">
+                  <?= htmlspecialchars($_SESSION['error'], ENT_QUOTES, 'UTF-8') ?>
+                </div>
+                <?php unset($_SESSION['error']); ?>
+              <?php endif; ?>
+
+              <?php if (!empty($_SESSION['success'])): ?>
+                <div class="flash flash-success">
+                  <?= htmlspecialchars($_SESSION['success'], ENT_QUOTES, 'UTF-8') ?>
+                </div>
+                <?php unset($_SESSION['success']); ?>
+              <?php endif; ?>
               <!-- バリデーション入れる -->
+
               <div class="error-ms">8文字以上</div>
               <!-- バリデーション入れる -->
 
@@ -98,7 +111,7 @@
 
           <div class="aside-box">
             <div class="submit-field">
-              <a href="index.php?page=home"><button type="submit" class="card">登録を変更する</button></a>
+              <button type="submit" class="card">登録を変更する</button>
             </div>
           </div>
         </aside>

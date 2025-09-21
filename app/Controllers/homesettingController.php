@@ -26,7 +26,7 @@ class HomeSettingController
         $measurement = $measurementModel->getMeasurementByUserId($userId);
 
         // view に渡す
-        require_once __DIR__ . '/../../resources/views/home/setting_1.php';
+        require_once __DIR__ . '/../../resources/views/home/setting.php';
     }
 
     public function update(): void

@@ -27,7 +27,7 @@ class settingController
         // バリデーション（体重・身長・理想体型が必須）
         if ($weight === '' || $height === '' || $bodyTypeId === '') {
             $_SESSION['error'] = '理想体型・体重・身長は必須です。';
-            header('Location: /index.php?page=setting');
+            header('Location: /index.php?page=create2');
             exit;
         }
 
@@ -51,7 +51,7 @@ class settingController
             exit;
         } else {
             $_SESSION['error'] = '保存に失敗しました。';
-            header('Location: /index.php?page=setting');
+            header('Location: /index.php?page=create2');
             exit;
         }
     }
