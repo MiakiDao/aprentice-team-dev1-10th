@@ -1,11 +1,11 @@
 <?php
-// require_once __DIR__ . '/../app/Controllers/signupController.php';
-// require_once __DIR__ . '/../app/Controllers/signinController.php';
+require_once __DIR__ . '/../app/Controllers/signupController.php';
+require_once __DIR__ . '/../app/Controllers/signinController.php';
 
-// require_once __DIR__ . '/../app/Controllers/settingController.php';
-// require_once __DIR__ . '/../app/Controllers/signoutController.php';
+require_once __DIR__ . '/../app/Controllers/settingController.php';
+require_once __DIR__ . '/../app/Controllers/signoutController.php';
 
-// require_once __DIR__ . '/../app/Controllers/homesettingController.php';
+require_once __DIR__ . '/../app/Controllers/homesettingController.php';
 
 
 // ?page=xxx でどのページを表示　① どのページかを読み取る（リクエスト解析）
@@ -20,42 +20,30 @@ switch ($page) {
     case 'create':
         $file = $viewsPath . 'set-login/create.php';
         break;
+
+    // 新規登録ページPOST    
+    case 'create_store':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            (new SignupController())->store();
+            exit;
+        } else {
+            header('Location: /index.php?page=create');
+            exit;
+        }
+
+    //理想体型・身長・体重登録ページGET
     case 'create2':
         $file = $viewsPath . 'set-login/create2.php';
         break;
-case 'create2_store':
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        header('Location: /index.php?page=home');
-        exit;
-    } else {
-        header('Location: /index.php?page=create2');
-        exit;
-    }
-    break;
-
-
-    // 新規登録ページPOST    
-case 'signup_store':
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        header('Location: /index.php?page=create2');
-        exit;
-    } else {
-        header('Location: /index.php?page=create');
-        exit;
-    }
-    //理想体型・身長・体重登録ページGET
-    case 'setting':
-    $file = $viewsPath . 'set-login/setting.php';
-    break;
 
     //理想体型・身長・体重登録ページPOST
-    case 'setting_store':
+    case 'create2_store':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             (new settingController())->store();
             exit;
         } //elseで例外処理
         else {
-            header('Location: /index.php?page=setting');
+            header('Location: /index.php?page=create2');
             exit;
         }
 
@@ -85,7 +73,6 @@ case 'signup_store':
     
     // ユーザー情報再設定ページGET
     case 'home-setting':
-        $file = $viewsPath . 'home/setting_1.php';
         (new HomeSettingController())->show();
         exit;
 

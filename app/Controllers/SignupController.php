@@ -32,7 +32,7 @@ class signupController
         if ($user) {
             // 成功：ユーザー情報をセッションへ入れて次画面へ
             $_SESSION['user'] = $user; // ['id','user_name','email'] を想定
-            header('Location: index.php?page=setting');
+            header('Location: index.php?page=create2');
             exit;
         } else {
             // 失敗：戻す

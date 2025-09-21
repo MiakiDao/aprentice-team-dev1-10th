@@ -13,7 +13,7 @@
   <div class="topbar-inner">
     <div class="brand">献立提案アプリ/ホーム画面</div>
     <div class="spacer"></div>
-    <button class="top-link top-link--ghost" type="button">選択画面</button>
+    <a href="/index.php?page=home-setting">選択画面</a>
     <button class="top-link top-link--accent" type="button">ユーザー登録</button>
   </div>
 </header>

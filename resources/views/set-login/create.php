@@ -26,8 +26,14 @@
       <?php endif; ?>
 
       <!-- aタグではなく、フォームでPOSTする -->
-      <form method="post" action="/index.php?page=signup_store" id="signup-form" novalidate>
+      <form method="post" action="/index.php?page=create_store" id="signup-form" novalidate>
         <ul class="menu">
+        <?php if (!empty($_SESSION['error'])): ?>
+          <div class="error-ms">
+            <?= htmlspecialchars($_SESSION['error'], ENT_QUOTES, 'UTF-8'); ?>
+          </div>
+          <?php unset($_SESSION['error']); // 1回だけ表示するため削除 ?>
+        <?php endif; ?>
           <li class="login-field">
             <label class="login-label" for="email">メールアドレス</label>
             <input id="email"
